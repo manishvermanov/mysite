@@ -1,20 +1,208 @@
 footer {
-  background-color: var(--light-color);
-  font-size: var(--body-font-size-xs);
+    display: flex;
+    background-color: black;
+    color: white;
+    padding: 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 50px;
+    overflow: hidden;
+
+
 }
 
-footer .footer > div {
-  margin: auto;
-  max-width: 1200px;
-  padding: 40px 24px 24px;
+.footer>div>div {
+    display: flex;
+    width: 100%;
 }
 
-footer .footer p {
-  margin: 0;
+
+.footer-brands {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-@media (width >= 900px) {
-  footer .footer > div {
-    padding: 40px 32px 24px;
-  }
+.footer-brands h1 {
+    margin-top: -3px;
+    font-size: 2rem;
+    font-weight: 800;
+}
+
+.footer-brands p {
+    margin-top: 5px;
+    font-size: 1rem;
+}
+
+.socials p {
+    display: flex;
+
+    gap: 1rem;
+    margin-top: 1rem
+}
+
+.socials p span img {
+    height: 39px;
+    width: 39px;
+    color: white;
+    border: 1px solid white;
+    border-radius: 12px;
+    padding: 0.59rem 0.2rem;
+    background-color: var(--black);
+    transition: all 0.3s ease-out;
+    margin: 0 4px;
+
+}
+
+.socials a span img:hover {
+    background-color: var(--accent);
+    transform: translateY(-8px);
+}
+
+
+
+
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 20px;
+
+}
+
+
+.footer-links h2 {
+    font-size: 24px;
+    font-weight: 800;
+    margin-bottom: 18px;
+
+}
+
+.link-container {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    /* 2 columns */
+    gap: 12px 60px;
+    /* row gap & column gap */
+    justify-content: center;
+}
+
+.links {
+    display: contents;
+    /* flatten the structure so anchors flow into grid cells */
+}
+
+.links p {
+    margin: 0;
+    display: contents;
+}
+
+.links a {
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease-out;
+    display: block;
+}
+
+.links a:hover {
+    color: var(--accent);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.footer-contact {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    padding: 0 30px;
+}
+
+.contact-info-items {
+    display: flex;
+    align-items: center;
+}
+
+.contact-info-items p picture,
+img {
+    width: 1.8rem;
+    height: auto;
+}
+
+.footer-contact-items {
+    display: flex;
+    align-items: flex-start;
+    /* Keep icon at top if text is multi-line */
+    gap: 14px;
+    padding: 6px 0;
+    /* Optional vertical padding between items */
+}
+
+.footer-contact-items p {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    text-align: left;
+    gap: 14px;
+    /* Ensure icon and text spacing is consistent */
+}
+
+
+
+.footer-contact-items p:hover {
+    color: var(--accent);
+    
+}
+
+.footer-contact-items picture:hover {
+   transform: translatex(5px);
+}
+
+.footer-contact-items picture,
+.footer-contact-items img {
+    width: 1.8rem;
+    height: auto;
+}
+
+
+.copyright-wrapper {
+    width: 100%;
+    text-align: center;
+    padding: 16px 0;
+}
+
+.copyright p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+
+
+
+.footer-brands-wrapper,
+.footer-links-wrapper,
+.footer-contact-wrapper {
+    width: 33.33%;
+    /* 100% / 3 boxes */
+    box-sizing: border-box;
+    padding: 10px;
+    text-align: center;
+    height: 180px;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+
 }

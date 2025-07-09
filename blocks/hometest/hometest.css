@@ -1,0 +1,100 @@
+.hometest-container {
+  margin-top: 2rem;
+}
+.hometest-container > div {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+#our-reviews {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--accent);
+  
+}
+
+/* Style for #what-people-say */
+#what-people-say {
+  font-size: 64px;
+    font-weight: 900;
+
+}
+
+.hometest-container > div:first-child p,
+.hometest-container > div:first-child h1 {
+  margin: 0 auto;
+}
+
+.test-cont {
+  display: flex;
+  gap: 25px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.test-items {
+  border: 1px solid #999;
+  border-radius: 10px;
+  padding: 1.3rem;
+  width: 370px;
+  font-family: sans-serif;
+  position: relative;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  height: 250px;
+}
+
+.test-items p {
+  margin: 0.5rem 0;
+}
+
+.test-items p:first-child {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: bold;
+  font-size: 1.3rem;
+  margin-top: -10px;
+  position: relative;
+}
+
+.test-items p:first-child img {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  margin-top: 15px;
+}
+
+.test-items p:nth-child(2) {
+  margin-left: -60px;
+  color: #777;
+  font-size: 0.9rem;
+  margin-top: -1.7rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* Align the quote icon (3rd <p>) visually in same row */
+.test-items p:nth-child(3) {
+  position: absolute;
+  top: 1.3rem;
+  right: 1.3rem;
+  margin: 0;
+  z-index: 2;
+}
+
+/* Quote icon styling */
+.test-items p:nth-child(3) img {
+  width: 64px;
+  height: auto;
+}
+
+/* Testimonial text */
+.test-items p:last-child {
+  margin-top: 1.2rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  text-align: left;
+}
+

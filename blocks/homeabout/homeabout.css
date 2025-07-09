@@ -1,0 +1,90 @@
+.homeabout-wrapper{
+    margin-top: 4rem;
+}
+
+.homeabout.block > div {
+  display: flex;
+ padding: 0 5rem;
+}
+
+.homeabout-content {
+  flex: 0 0 70%;
+  
+}
+
+.homeabout-image {
+  flex: 0 0 30%;
+}
+
+#about-us{
+    font-size: 3.5rem;
+    font-weight: 900;
+}
+
+.homeabout-content p{
+    font-size: 1.5rem;
+    font-weight: 400;
+    line-height: 1;
+    margin-top: 1rem;
+}
+
+
+.homeabout-image picture {
+  width: 100%;
+  display: block;
+}
+
+.homeabout-image picture img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+
+
+.homeabout-content table {
+
+  width: 70%;
+  table-layout: fixed;
+  margin-top: 2.5rem;
+}
+
+.homeabout-content td {
+
+  text-align: left;
+  vertical-align: top;
+  padding-left: 2rem;
+}
+
+.homeabout-content td h5 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.homeabout-content td h6 {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.homeabout-content td:nth-child(2) {
+  border-left: 2px solid #ccc;
+  border-right: 2px solid #ccc;
+}
+
+.btn-about {
+    margin-top: 2rem;
+    width: 200px;
+    height: 53px;
+    background-color: var(--black);
+    font-size: 24px;
+    color: white;
+    border-radius: 12px;
+    border: 1px solid var(--black);
+    transition: all 0.2s ease-out;
+}
+
+.btn-about:hover {
+    background-color: var(--accent);
+    border: 1px solid var(--accent);
+}
