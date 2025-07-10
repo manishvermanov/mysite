@@ -8,7 +8,9 @@ import { loadFragment } from '../fragment/fragment.js';
 export default async function decorate(block) {
   // load footer as fragment
   const footerMeta = getMetadata('footer');
-  const footerPath = footerMeta ? new URL(footerMeta, window.location).pathname : '/footer';
+  const footerPath = footerMeta
+    ? new URL(footerMeta, window.location).pathname
+    : '/footer';
   const fragment = await loadFragment(footerPath);
 
   // decorate footer DOM
@@ -29,7 +31,9 @@ export default async function decorate(block) {
   const footerBrandsWrapper = document.querySelector('.footer-brands-wrapper');
 
   // Get all <img> tags inside it and find the common parent <div>
-  const socialIconsDiv = footerBrandsWrapper.querySelector('img')?.closest('div');
+  const socialIconsDiv = footerBrandsWrapper
+    .querySelector('img')
+    ?.closest('div');
 
   if (socialIconsDiv) {
     socialIconsDiv.classList.add('socials');

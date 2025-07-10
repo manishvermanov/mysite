@@ -13,125 +13,49 @@ nav {
     padding: 12px;
     transition: all 0.4s ease-out;
     gap: 6.4rem;
-   
 }
 
 nav.scrolled {
-  filter: drop-shadow(0px 1px 3px var(--black));
+    filter: drop-shadow(0 1px 3px var(--black));
 }
 
-
-.nav-brand{
-  align-items: center;
-  justify-content: center;
+.nav-brand {
+    align-items: center;
+    justify-content: center;
 }
 
-.logo{
-
+.logo {
     font-size: 1.8rem;
     font-weight: 900;
     margin-left: 2.5rem;
-    
 }
 
 .nav-sections ul {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  margin-left: 1.1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    margin-left: 1.1rem;
 }
 
 .nav-sections a {
-  display: inline-block;
-  position: relative;
-  color: var(--black);
-  text-decoration: none;
-  font-size: 1.3rem;
-  font-weight: 400;
-  border-radius: 32px;
-  background-color: white;
-  padding: 0.5rem 1rem;
-  transition: all 0.2s ease-out;
+    display: inline-block;
+    position: relative;
+    color: var(--black);
+    text-decoration: none;
+    font-size: 1.3rem;
+    font-weight: 400;
+    border-radius: 32px;
+    background-color: white;
+    padding: 0.5rem 1rem;
+    transition: all 0.2s ease-out;
 }
 
 .nav-sections a:hover,
 .nav-sections a.active {
-  color: white;
-  background-color: var(--accent);
-}
-
-
-
-.appbtn p{
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    font-size: 1.3rem;
-    font-weight: 500;
-    color: var(--black);
-    transition: all ease-in-out 0.2s;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    margin-right: 50px;
-}
-
-.btn2{
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    font-size: 1.2rem;
-    font-weight: 500;
-    color: var(--black);
-    transition: all ease-in-out 0.2s;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    
-    white-space: nowrap;
-   margin-right: 0;
-    
-}
-
-.btn2:hover {
-    transform: translateX(10px);
-  }
-
-
-.appbtn img{
-  width: 28px;
-  height: auto;
-  margin-top: 7px;
-}
-
-
-.afterpaw img{
-  width: 29px;
-  height: 30px;
-}
-
-
-
-
-
-
-/* Hide afterpaw by default */
-.afterpaw {
-  display: none;
-}
-
-/* Show afterpaw on hover, hide beforepaw */
-.appbtn-wrapper p:hover .afterpaw {
-  display: inline;
-}
-.appbtn-wrapper p:hover .beforepaw {
-  display: none;
-}
-
-.appbtn p:hover .btn2 {
-  transform: translateX(10px);
+    color: white;
+    background-color: var(--accent);
 }

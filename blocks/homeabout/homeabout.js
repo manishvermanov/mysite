@@ -1,5 +1,5 @@
-export default function decorate(block){
-    const homeabout = document.querySelector('.homeabout.block > div');
+export default function decorate() {
+  const homeabout = document.querySelector('.homeabout.block > div');
   if (homeabout) {
     const children = homeabout.querySelectorAll(':scope > div');
     if (children.length === 2) {
@@ -8,12 +8,12 @@ export default function decorate(block){
     }
   }
 
-  const ul = document.querySelector(".homeabout-content ul");
+  const ul = document.querySelector('.homeabout-content ul');
   if (ul && ul.children.length > 0) {
     const li = ul.children[0];
-    const button = document.createElement("button");
+    const button = document.createElement('button');
     button.innerHTML = li.innerHTML;
-    button.className = "btn-about"; // optional if styling needed via existing CSS
+    button.className = 'btn-about'; // optional if styling needed via existing CSS
     ul.replaceChild(button, li);
   }
 }

@@ -1,0 +1,61 @@
+.appbtn p {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: var(--black);
+    transition: all ease-in-out 0.2s;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    margin-right: 50px;
+}
+
+.btn2 {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--black);
+    transition: all ease-in-out 0.2s;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    white-space: nowrap;
+    margin-right: 0;
+}
+
+.btn2:hover {
+    transform: translateX(10px);
+}
+
+.appbtn img {
+    width: 28px;
+    height: auto;
+    margin-top: 7px;
+}
+
+.afterpaw img {
+    width: 29px;
+    height: 30px;
+}
+
+/* Hide afterpaw by default */
+.afterpaw {
+    display: none;
+}
+
+/* Show afterpaw on hover, hide beforepaw */
+.appbtn-wrapper p:hover .afterpaw {
+    display: inline;
+}
+
+.appbtn-wrapper p:hover .beforepaw {
+    display: none;
+}
+
+.appbtn p:hover .btn2 {
+    transform: translateX(10px);
+}

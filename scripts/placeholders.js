@@ -28,7 +28,8 @@ export async function fetchPlaceholders(prefix = 'default') {
             return resp.json();
           }
           return {};
-        }).then((json) => {
+        })
+        .then((json) => {
           const placeholders = {};
           json.data
             .filter((placeholder) => placeholder.Key)
@@ -37,7 +38,8 @@ export async function fetchPlaceholders(prefix = 'default') {
             });
           window.placeholders[prefix] = placeholders;
           resolve(window.placeholders[prefix]);
-        }).catch(() => {
+        })
+        .catch(() => {
           // error loading placeholders
           window.placeholders[prefix] = {};
           resolve(window.placeholders[prefix]);

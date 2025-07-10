@@ -1,0 +1,48 @@
+/* ✅ Global styles first to prevent no-descending-specificity errors */
+img,
+picture {
+    width: 1.8rem;
+    height: auto;
+}
+
+/* Footer layout container */
+.footer-contact {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    padding: 0 30px;
+}
+
+/* Each item in the footer list */
+.footer-contact-items {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 6px 0;
+}
+
+/* Paragraph inside each contact item */
+.footer-contact-items p {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    text-align: left;
+    gap: 14px;
+}
+
+/* Hover effect on paragraph text */
+.footer-contact-items p:hover {
+    color: var(--accent);
+}
+
+/* Hover effect on picture icon */
+.footer-contact-items picture:hover {
+    transform: translateX(5px);
+}
+
+/* Contact icon and text alignment */
+.contact-info-items {
+    display: flex;
+    align-items: center;
+}

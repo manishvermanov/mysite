@@ -1,0 +1,39 @@
+.footer-brands {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-brands h1 {
+    margin-top: -3px;
+    font-size: 2rem;
+    font-weight: 800;
+}
+
+.footer-brands p {
+    margin-top: 5px;
+    font-size: 1rem;
+}
+
+.socials p {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.socials p span img {
+    height: 39px;
+    width: 39px;
+    color: white;
+    border: 1px solid white;
+    border-radius: 12px;
+    padding: 0.59rem 0.2rem;
+    background-color: var(--black);
+    transition: all 0.3s ease-out;
+    margin: 0 4px;
+}
+
+.socials a span img:hover {
+    background-color: var(--accent);
+    transform: translateY(-8px);
+}

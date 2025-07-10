@@ -58,7 +58,9 @@ function createSlide(row, slideIndex, carouselId) {
   slide.classList.add('carousel-slide');
 
   row.querySelectorAll(':scope > div').forEach((column, colIdx) => {
-    column.classList.add(`carousel-slide-${colIdx === 0 ? 'image' : 'content'}`);
+    column.classList.add(
+      `carousel-slide-${colIdx === 0 ? 'image' : 'content'}`,
+    );
     slide.append(column);
   });
 
@@ -80,7 +82,10 @@ export default async function decorate(block) {
   const placeholders = await fetchPlaceholders();
 
   block.setAttribute('role', 'region');
-  block.setAttribute('aria-roledescription', placeholders.carousel || 'Carousel');
+  block.setAttribute(
+    'aria-roledescription',
+    placeholders.carousel || 'Carousel',
+  );
 
   const container = document.createElement('div');
   container.classList.add('carousel-slides-container');
@@ -111,7 +116,7 @@ export default async function decorate(block) {
     showSlide(block, 0); // Force initial scroll & state
   }
 
-   const section = block.closest('.carousel-container');
+  const section = block.closest('.carousel-container');
   if (!section) return;
 
   const defaultWrapper = section.querySelector('.default-content-wrapper');

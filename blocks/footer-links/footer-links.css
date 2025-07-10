@@ -1,0 +1,45 @@
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 20px;
+}
+
+.footer-links h2 {
+    font-size: 24px;
+    font-weight: 800;
+    margin-bottom: 18px;
+}
+
+.link-container {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+
+    /* 2 columns */
+    gap: 12px 60px;
+
+    /* row gap & column gap */
+    justify-content: center;
+}
+
+.links {
+    display: contents;
+
+    /* flatten the structure so anchors flow into grid cells */
+}
+
+.links p {
+    margin: 0;
+    display: contents;
+}
+
+.links a {
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease-out;
+    display: block;
+}
+
+.links a:hover {
+    color: var(--accent);
+}
