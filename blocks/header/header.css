@@ -24,12 +24,12 @@ nav.scrolled {
     justify-content: center;
 }
 
-.logo {
-    font-size: 1.8rem;
-    font-weight: 900;
-    margin-left: 2.5rem;
-}
 
+#furreverhome{
+     font-weight: 900;
+    margin-left: 2.5rem;
+    font-size: 1.8rem;
+}
 .nav-sections ul {
     display: flex;
     justify-content: center;
