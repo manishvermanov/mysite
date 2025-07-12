@@ -55,14 +55,6 @@ input[type="tel"] {
 
 select {
   height: 45px;
-  appearance: none;
-  appearance: none;
-  appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 140 140' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline points='35,55 70,90 105,55' fill='none' stroke='black' stroke-width='15'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 1rem center;
-  background-size: 0.8rem;
-  padding-right: 2.5rem;
 }
 
 textarea {
