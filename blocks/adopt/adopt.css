@@ -1,0 +1,130 @@
+.adopt-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  background-color: #f2efef;
+}
+
+.adopt-wrapper {
+  background-color: #f2efef;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgb(0 0 0 / 10%);
+  width: 800px;
+  margin-top: 6rem;
+}
+
+.adopt.block form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Field Wrapper Styling */
+.field-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.field-wrapper label {
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+/* Input, Select, and Textarea Styling */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+select,
+textarea {
+  padding: 0.75rem;
+  border: 1px solid black;
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: white;
+  transition: border-color 0.3s;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"] {
+  height: 40px;
+}
+
+select {
+  height: 45px;
+  appearance: none;
+  appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 140 140' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline points='35,55 70,90 105,55' fill='none' stroke='black' stroke-width='15'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 0.8rem;
+  padding-right: 2.5rem;
+}
+
+textarea {
+  height: 100px;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: #888;
+}
+
+/* Submit Button Styling */
+.submit-wrapper .button {
+  background-color: #2c2c2c;
+  color: white;
+  font-weight: bold;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+}
+
+.submit-wrapper .button:hover {
+  background-color: var(--accent);
+  color: black;
+}
+
+select option[disabled] {
+  display: none;
+}
+
+/* Radio Buttons */
+.radio-wrapper {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  gap: 2rem;
+}
+
+.radio-wrapper > label {
+  margin-right: 2rem;
+}
+
+.radio-wrapper .radio-option {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  line-height: 1.2;
+}
+
+.radio-wrapper .radio-option input[type="radio"] {
+  vertical-align: middle;
+  margin: 0;
+  transform: translateY(-1px);
+}
+
+.radio-wrapper .radio-option label {
+  margin: 0;
+  padding: 0;
+  font-weight: 400;
+}
