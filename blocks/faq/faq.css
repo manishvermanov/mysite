@@ -1,0 +1,80 @@
+/* FAQ Title with Icon in a Row and Centered */
+.faq-container > .default-content-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.faq-container picture,
+.faq-container img {
+    width: 50px;
+    height: 50px;
+}
+
+/* Heading Styling */
+.faq-container h1 {
+    font-size: 2.2rem;
+    font-weight: 400;
+    text-align: center;
+    margin: 0;
+}
+
+/* FAQ Wrapper with Centered Content */
+.faq-wrapper {
+    padding: 2rem 0;
+    width: 60%;
+    margin: 0 auto;
+    margin-top: 1.3rem;
+}
+
+/* Each Q&A Block */
+.faq-wrapper h4 {
+    font-size: 1.2rem;
+    cursor: pointer;
+    position: relative;
+    transition: color 0.3s ease;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #ccc; /* Divider line between questions */
+    padding-right: 1.5rem;
+}
+
+/* Arrow Indicator */
+.faq-wrapper h4::after {
+    content: "▾";
+    font-size: 1.4rem;
+    position: absolute;
+    right: 0;
+    transition: transform 0.3s ease;
+}
+
+/* Answer Styling */
+.faq-wrapper h5 {
+    font-weight: 400;
+    font-size: 1rem;
+    margin: 0.5rem 0 1rem;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition:
+        max-height 0.4s ease,
+        opacity 0.4s ease;
+}
+
+/* Expanded State */
+.faq-wrapper h4.active::after {
+    transform: rotate(180deg);
+}
+
+.faq-wrapper h4.active + h5 {
+    max-height: 200px;
+    opacity: 1;
+}
+
+/* Removed h5 bottom line */
+.faq-wrapper h5::after {
+    display: none;
+}

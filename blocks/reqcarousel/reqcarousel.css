@@ -1,0 +1,118 @@
+.carousel-container {
+    position: relative;
+    overflow: hidden;
+}
+
+.carousel-scroll {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    gap: 2rem;
+    padding: 1rem;
+    margin: 0 45px;
+
+    /* Scrollbar styles */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE 10+ */
+}
+
+.carousel-scroll::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+}
+
+.carousel-scroll > div {
+    width: 260px;
+    height: 13rem;
+    flex: 0 0 auto;
+    padding: 20px 18px;
+    border-radius: 16px;
+    background: #ebe4e4;
+    font-weight: 700;
+    color: var(--black);
+    text-align: left;
+    box-shadow: 0 8px 16px rgb(0 0 0 / 8%);
+    transition:
+        transform 0.3s ease,
+        background 0.4s ease;
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent; /* Transparent background */
+    border: none;
+    font-size: 2.2rem;
+    color: #333; /* Dark icon color for visibility */
+    padding: 0.3rem 0.6rem;
+    cursor: pointer;
+    z-index: 10;
+    border-radius: 50%;
+    transition: background 0.2s ease;
+}
+
+.carousel-btn:hover {
+    background: rgb(0 0 0 / 5%); /* subtle hover effect */
+}
+
+.carousel-btn.left {
+    left: 0.5rem; /* Very close to the left edge */
+}
+
+.carousel-btn.right {
+    right: 0.5rem; /* Very close to the right edge */
+}
+
+.reqcarousel-container > div {
+    display: flex;
+    align-items: center;
+    gap: 2rem; /* space between image and heading */
+    flex-wrap: wrap; /* allows responsiveness */
+}
+
+.reqcarousel-container > div p {
+    margin: 0;
+}
+
+.reqcarousel-container > div picture img {
+    max-width: 200px;
+    height: auto;
+}
+
+.reqcarousel-container > div h2 {
+    font-size: 25px;
+    text-align: center;
+}
+
+.reqcarousel-container > div h4 {
+    font-size: 16px;
+    margin-bottom: 1.5rem;
+    justify-content: left;
+    padding: 20px;
+}
+
+.reqcarousel-container > .default-content-wrapper {
+    display: flex;
+    align-items: center; /* vertical centering */
+    justify-content: center; /* horizontal centering */
+    gap: 2rem;
+    padding: 2rem;
+    flex-wrap: wrap;
+    text-align: center; /* for better mobile look */
+}
+
+.reqcarousel-container > .default-content-wrapper p {
+    margin: 0;
+}
+
+.reqcarousel-container > .default-content-wrapper picture img {
+    width: 50px;
+    height: 50px;
+    margin-top: -3px;
+}
+
+.reqcarousel-container > .default-content-wrapper h1 {
+    font-size: 3rem;
+    margin: 0;
+    font-weight: 800;
+}

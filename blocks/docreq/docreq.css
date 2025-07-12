@@ -1,0 +1,72 @@
+/* Top Section: Image and Heading in One Row, Centered */
+.docreq-container > .default-content-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    text-align: center;
+    margin-top: 4rem;
+    margin-bottom: 1rem;
+}
+
+.docreq-container > .default-content-wrapper picture,
+.docreq-container > .default-content-wrapper img {
+    width: 48px; /* Icon size in header */
+    height: auto;
+}
+
+.docreq-wrapper h1 {
+    font-size: 1.2rem;
+    margin-top: 0;
+    line-height: 1.4;
+}
+
+.docreq-container > .default-content-wrapper h1 {
+    font-size: 2.4rem;
+}
+
+/* Icon Grid Layout */
+.docreq-wrapper > .docreq > div {
+    display: flex;
+    justify-content: space-evenly; /* Even spacing across container */
+    flex-wrap: wrap;
+    padding: 2rem 3rem;
+    text-align: center;
+    gap: 2rem;
+}
+
+/* Each Icon Block */
+.docreq-wrapper > .docreq > div > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 180px;
+}
+
+/* Circular Background Behind Icons */
+.docreq-wrapper > .docreq > div > div picture {
+    background-color: #fff0d9; /* light peach */
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgb(0 0 0 / 10%);
+    margin-bottom: 0.75rem;
+    transition: transform 0.3s ease;
+}
+
+/* Icon Styling Inside Circle */
+.docreq-wrapper > .docreq > div > div picture img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+}
+
+/* Heading below each icon */
+
+.docreq-wrapper > .docreq > div > div picture:hover {
+    transform: translateY(-10px);
+}

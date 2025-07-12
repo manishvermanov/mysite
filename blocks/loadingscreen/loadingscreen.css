@@ -1,0 +1,41 @@
+/* Main loading screen container */
+.loadingscreen-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: white;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: opacity 0.5s ease;
+}
+
+/* Optional if you want to animate fade-out */
+.loadingscreen-container.fade-out {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Wrapper to keep image from shifting layout */
+.loadingimm {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 400px;
+    height: 400px;
+    max-width: 90%;
+    max-height: 90%;
+    transform: translateX(50px);
+}
+
+/* The gif image itself */
+.loadingimm picture,
+.loadingimm img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}

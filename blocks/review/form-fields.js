@@ -211,45 +211,11 @@ const createCheckbox = (fd) => {
 };
 
 const createRadio = (fd) => {
-  const fieldWrapper = createFieldWrapper(fd);
+  const { field, fieldWrapper } = createInput(fd);
+  if (!field.value) field.value = fd.Label || 'on';
   fieldWrapper.classList.add('selection-wrapper');
 
-  const groupLabel = createLabel(fd);
-  fieldWrapper.append(groupLabel);
-
-  if (fd.Options) {
-    const options = fd.Options.split(',').map((opt) => opt.trim());
-
-    options.forEach((option, index) => {
-      const radioId = `${fd.Id}-${index}`;
-
-      const input = document.createElement('input');
-      input.type = 'radio';
-      input.id = radioId;
-      input.name = fd.Name;
-      input.value = option;
-
-      if (
-        fd.Mandatory
-        && (fd.Mandatory.toLowerCase() === 'true'
-          || fd.Mandatory.toLowerCase() === 'x')
-      ) {
-        input.required = true;
-      }
-
-      const label = document.createElement('label');
-      label.setAttribute('for', radioId);
-      label.textContent = option;
-
-      const wrapper = document.createElement('div');
-      wrapper.classList.add('radio-option');
-      wrapper.append(input, label);
-
-      fieldWrapper.append(wrapper);
-    });
-  }
-
-  return { field: fieldWrapper, fieldWrapper };
+  return { field, fieldWrapper };
 };
 
 const FIELD_CREATOR_FUNCTIONS = {
