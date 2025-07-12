@@ -157,7 +157,7 @@ export default async function decorate(block) {
              <p><strong>Temperament:</strong> ${card.breed_info.temperament}</p>`
           : `<p>No breed info<br><strong>Pet ID:</strong> ${card.id}</p>`;
 
-        const adoptLink = `http://localhost:3000/adopt?PetID=${card.id}&Breed=${encodeURIComponent(card.name)}&PetImage=${encodeURIComponent(card.front)}`;
+        const adoptLink = `https://main--mysite--manishvermanov.aem.page/adopt?PetID=${card.id}&Breed=${encodeURIComponent(card.name)}&PetImage=${encodeURIComponent(card.front)}`;
 
         return `
         <div class="character-card">
