@@ -43,8 +43,12 @@
     margin-top: 15px;
 }
 
+.test-items p:first-child strong {
+    margin-left: 20px;
+}
+
 .test-items p:nth-child(2) {
-    margin-left: -60px;
+    margin-left: -80px;
     color: #777;
     font-size: 0.9rem;
     margin-top: -1.7rem;

@@ -42,7 +42,7 @@
 }
 
 .homereq-text h1 {
-    margin-top: -10px;
+    margin-top: -12px;
     font-size: 50px;
     font-weight: 900;
 }
@@ -50,7 +50,7 @@
 .homereq p {
     font-size: 25px;
     font-weight: 600;
-    line-height: 1.5;
+    line-height: 1.3;
 }
 
 .homereq-image img {
@@ -60,28 +60,54 @@
 
 /* Steps section */
 .homereq-steps {
-    margin-top: 2rem;
+    margin-top: 1.3rem;
 }
 
 .each-step {
     display: flex;
     align-items: center;
-    gap: 1.3rem;
+    gap: 1.2rem;
     margin-bottom: 1.2rem;
     flex-wrap: wrap; /* Optional: for responsiveness */
 }
 
 /* ✅ Combined .each-step img styles and placed above :hover */
 .each-step img {
-    width: 35px;
+    width: 45px;
     height: auto;
-    padding: 0.2rem;
+    padding: 0.3rem;
     border: 1px solid black;
     border-radius: 50%;
+    transition: transform 0.3s ease-in-out;
+}
+
+.each-step:nth-of-type(1) img {
+    background-color: #b9ff46; /* light red */
+}
+
+.each-step:nth-of-type(2) img {
+    background-color: #fff846; /* light orange */
+}
+
+.each-step:nth-of-type(3) img {
+    background-color: #ff945a; /* light yellow */
+}
+
+.each-step:nth-of-type(4) img {
+    background-color: #46c7ff; /* light green */
+}
+
+.each-step:nth-of-type(5) img {
+    background-color: #9bf6ff; /* light blue */
+}
+
+.each-step:nth-of-type(6) img {
+    background-color: #4fffca; /* light indigo */
 }
 
 .each-step img:hover {
     background: aqua;
+    transform: scale(1.3);
 }
 
 .each-step h5 {

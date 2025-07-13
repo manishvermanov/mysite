@@ -24,7 +24,7 @@ nav.scrolled {
     justify-content: center;
 }
 
-#furreverhome {
+.nav-brand .default-content-wrapper h1 {
     font-weight: 900;
     margin-left: 2.5rem;
     font-size: 1.8rem;
