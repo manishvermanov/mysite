@@ -68,6 +68,19 @@ export default async function decorate(block) {
   }
 
   const navSections = nav.querySelector('.nav-sections');
+  // Highlight active page in nav
+  if (navSections) {
+    const currentPath = window.location.pathname.replace(/\/$/, ''); // Remove trailing slash
+    const navLinks = navSections.querySelectorAll('a');
+
+    navLinks.forEach((link) => {
+      const linkPath = new URL(link.href, window.location.origin).pathname.replace(/\/$/, '');
+      if (linkPath === currentPath) {
+        link.classList.add('active');
+      }
+    });
+  }
+
   if (navSections) {
     navSections
       .querySelectorAll(':scope .default-content-wrapper > ul > li')
