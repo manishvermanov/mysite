@@ -110,7 +110,6 @@
 }
 
 .each-step img:hover {
-    background: aqua;
     transform: scale(1.3);
 }
 
