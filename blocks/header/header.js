@@ -1,7 +1,7 @@
 import { getMetadata } from '../../scripts/aem.js';
 import { loadFragment } from '../fragment/fragment.js';
 
-const isDesktop = window.matchMedia('(min-width: 900px)');
+const isDesktop = window.matchMedia('(min-width: 475px)');
 
 const toggleAllNavSections = (sections, expanded = false) => {
   sections
@@ -28,6 +28,10 @@ const toggleMenu = (nav, navSections, forceExpanded = null) => {
       'aria-label',
       expanded ? 'Open navigation' : 'Close navigation',
     );
+  }
+
+  if (button && button.firstElementChild) {
+    button.firstElementChild.classList.toggle('open', !expanded);
   }
 
   const navDrops = navSections.querySelectorAll('.nav-drop');
@@ -70,7 +74,7 @@ export default async function decorate(block) {
   const navSections = nav.querySelector('.nav-sections');
   // Highlight active page in nav
   if (navSections) {
-    const currentPath = window.location.pathname.replace(/\/$/, ''); // Remove trailing slash
+    const currentPath = window.location.pathname.replace(/\/$/, '');
     const navLinks = navSections.querySelectorAll('a');
 
     navLinks.forEach((link) => {
@@ -169,6 +173,21 @@ export default async function decorate(block) {
       pictures[0].classList.add('beforepaw');
       pictures[1].classList.add('afterpaw');
     }
+  }
+
+  // ✅ ADDED: Inject "Adopt Now" into mobile nav
+  if (!isDesktop.matches && navSections) {
+    const navList = navSections.querySelector('ul');
+    const adoptLi = document.createElement('li');
+    adoptLi.setAttribute('aria-expanded', 'false');
+
+    const adoptLink = document.createElement('a');
+    adoptLink.href = '/apply'; // change this to your actual adopt form path
+    adoptLink.textContent = 'Adopt Now 🐾';
+    adoptLink.className = 'mobile-adopt-link';
+
+    adoptLi.appendChild(adoptLink);
+    navList.appendChild(adoptLi);
   }
 
   window.addEventListener('scroll', () => {

@@ -74,7 +74,9 @@ export default function decorate(block) {
       `;
       document.body.appendChild(tooltip);
 
-      tooltip.querySelector('.tooltip-close').addEventListener('click', () => hideTooltip(tooltip));
+      tooltip
+        .querySelector('.tooltip-close')
+        .addEventListener('click', () => hideTooltip(tooltip));
 
       tooltip.querySelector('.tooltip-link').addEventListener('click', (e) => {
         e.preventDefault();
@@ -113,7 +115,10 @@ export default function decorate(block) {
             name: 'FurreverHome',
             description: 'Support Animal Welfare',
             handler(response) {
-              showToast(`🎉 Donation Successful! Payment ID: ${response.razorpay_payment_id}`, 'success');
+              showToast(
+                `🎉 Donation Successful! Payment ID: ${response.razorpay_payment_id}`,
+                'success',
+              );
             },
             prefill: { name: '', email: '', contact: '' },
             theme: { color: '#ff9a24' },
@@ -121,12 +126,18 @@ export default function decorate(block) {
 
           const rzp = new Razorpay(options);
           rzp.on('payment.failed', (response) => {
-            showToast(`❌ Payment failed: ${response.error.description}`, 'error');
+            showToast(
+              `❌ Payment failed: ${response.error.description}`,
+              'error',
+            );
           });
 
           rzp.open();
         } catch (err) {
-          showToast('Something went wrong while opening payment. Please try again later.', 'error');
+          showToast(
+            'Something went wrong while opening payment. Please try again later.',
+            'error',
+          );
         }
       });
     }

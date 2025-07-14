@@ -1,3 +1,4 @@
+/* ----- NAV BASE STYLES ----- */
 nav {
     z-index: 999;
     position: fixed;
@@ -58,4 +59,153 @@ nav.scrolled {
 .nav-sections a.active {
     color: white;
     background-color: var(--accent);
+}
+
+/* Hide hamburger by default */
+.nav-hamburger {
+    display: none;
+}
+
+/* ❌ Hide mobile-adopt-link on desktop */
+@media (width >= 476px) {
+    .mobile-adopt-link {
+        display: none !important;
+    }
+}
+
+/* ✅ Default mobile-adopt-link hidden */
+.mobile-adopt-link {
+    font-weight: 600;
+    color: #ff9a24;
+    display: none !important;
+}
+
+/* ----- MOBILE STYLES ----- */
+@media (width <= 475px) {
+    .nav-brand {
+        position: absolute;
+        left: -1rem;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .nav-hamburger {
+        display: flex;
+        align-items: center;
+        position: absolute;
+        right: 1.5rem;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 1000;
+        height: 100%;
+    }
+
+    .nav-hamburger button {
+        background: none;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+    }
+
+    .nav-hamburger-icon {
+        width: 24px;
+        height: 2px;
+        background-color: black;
+        position: relative;
+        display: block;
+        transition: all 0.3s ease;
+    }
+
+    .nav-hamburger-icon::before,
+    .nav-hamburger-icon::after {
+        content: "";
+        position: absolute;
+        width: 24px;
+        height: 2px;
+        background-color: black;
+        left: 0;
+        transition: all 0.3s ease;
+    }
+
+    .nav-hamburger-icon::before {
+        top: -8px;
+    }
+
+    .nav-hamburger-icon::after {
+        top: 8px;
+    }
+
+    /* X animation */
+    .nav-hamburger-icon.open {
+        background-color: transparent;
+    }
+
+    .nav-hamburger-icon.open::before {
+        transform: rotate(45deg);
+        top: 0;
+    }
+
+    .nav-hamburger-icon.open::after {
+        transform: rotate(-45deg);
+        top: 0;
+    }
+
+    /* Mobile menu container - slide in from right */
+    .nav-sections {
+        border-top: 1px solid black;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        top: 5em;
+        right: 0;
+        width: 100vw;
+        height: calc(100vh - 5em);
+        background-color: white;
+        z-index: 998;
+        padding-top: 0.5rem;
+        transform: translateX(100%);
+        transition:
+            transform 0.9s ease-in-out,
+            opacity 0.9s ease-in-out 0.2s,
+            /* delay opacity fade-out */ visibility 0.9s ease-in-out 0.2s;
+        pointer-events: none;
+        opacity: 0;
+    }
+
+    nav[aria-expanded="true"] .nav-sections {
+        transform: translateX(0);
+        pointer-events: auto;
+        opacity: 1;
+    }
+
+    .nav-sections ul {
+        flex-direction: column;
+        gap: 1.2rem;
+        align-items: center;
+        margin-top: -2rem;
+    }
+
+    .nav-sections a,
+    .mobile-adopt-link {
+        padding: 0.6rem 1.2rem;
+        font-size: 1.1rem;
+    }
+
+    .mobile-adopt-link {
+        display: inline-block !important;
+        font-size: 1.4rem;
+        padding: 0.8rem 1.6rem;
+    }
+
+    .nav-tools {
+        display: none;
+    }
+}
+
+/* Optional: Prevent unwanted horizontal scroll */
+html,
+body {
+    overflow-x: hidden;
 }
