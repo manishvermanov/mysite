@@ -1,0 +1,185 @@
+/* Container modal box */
+.upimodal {
+  width: 475px;
+  margin: 2rem auto;
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 4px 20px rgb(0 0 0 / 15%);
+  font-family: Arial, sans-serif;
+  position: relative;
+}
+
+.upimodal-wrapper {
+  display: none;
+}
+
+.upimodal > div:first-of-type {
+  background-color: var(--black);
+  border-bottom: 1px solid black;
+  padding: 0.5rem 1rem;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+}
+
+/* Remove default h3 margin so it doesn't break background */
+.upimodal h3 {
+  margin: 0;
+  padding: 1rem;
+  font-size: 1.3rem;
+  text-align: left;
+  color: white;
+}
+
+.upimodal > div:last-of-type {
+  padding: 0 1.2rem 1.7rem;
+}
+
+/* Input list (UPI fields) */
+.upimodal ul {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  padding: 0;
+}
+
+.upimodal ul li {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+/* Labels */
+.upimodal ul li label {
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 0.4rem;
+}
+
+/* Inputs */
+.upimodal ul li input,
+.upimodal input.upi-input {
+  width: 100%;
+  padding: 0.6rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+/* Payment method image preview */
+.upimodal picture {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1.5rem 0;
+  width: 100%;
+}
+
+.upimodal picture img {
+  width: 240px;
+  height: auto;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  display: block;
+  margin: 0 40px;
+}
+
+/* General paragraph styles */
+.upimodal p {
+  font-size: 1.1rem;
+  margin: 0.5rem 0;
+}
+
+/* Payment method toggle list */
+.upimodal ul:last-of-type {
+  display: flex;
+  justify-content: space-around;
+}
+
+/* Base style for payment method options */
+.upimodal ul:last-of-type li {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin: 0.5rem 0;
+}
+
+/* Active style with stronger shadow */
+.upimodal ul:last-of-type li.active {
+  background-color: #797775;
+  color: white;
+  box-shadow: 0 2px 6px rgb(0 0 0 / 30%);
+}
+
+/* Validation checkbox and message */
+.validate-wrapper {
+  display: flex;
+  align-items: center;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.validate-label {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  white-space: nowrap;
+}
+
+/* Error messages */
+.error-msg,
+.upi-error-msg {
+  color: red;
+  font-size: 0.85rem;
+  display: none;
+}
+
+.upi-error-msg {
+  margin-left: 8px;
+}
+
+/* Close button */
+.modal-close-btn {
+  position: absolute;
+  top: 23.9px;
+  right: 20px;
+  font-size: 1.2rem;
+  color: white;
+  cursor: pointer;
+}
+
+/* Pay button */
+.pay-button {
+  width: 40%;
+  padding: 0.4rem;
+  font-size: 1.1rem;
+  background-color: var(--black);
+  border: none;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+  margin-top: -5px;
+  margin-left: 15px;
+}
+
+.pay-button:hover {
+  background-color: #e5891f;
+}
+
+/* Section title */
+#select-payment-method {
+  margin-top: 1rem;
+  border-top: 1px solid black;
+  padding-top: 1rem;
+  font-size: 1rem;
+  text-align: left;
+  color: black;
+}
+
+.hidden {
+  display: none !important;
+}

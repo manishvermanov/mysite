@@ -74,7 +74,10 @@ export default async function decorate(block) {
     const navLinks = navSections.querySelectorAll('a');
 
     navLinks.forEach((link) => {
-      const linkPath = new URL(link.href, window.location.origin).pathname.replace(/\/$/, '');
+      const linkPath = new URL(
+        link.href,
+        window.location.origin,
+      ).pathname.replace(/\/$/, '');
       if (linkPath === currentPath) {
         link.classList.add('active');
       }

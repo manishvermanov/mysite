@@ -113,7 +113,7 @@
     margin-top: -12px;
     font-size: 18px;
     font-weight: 500;
-      transition: transform 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out;
 }
 
 .each-step h5:hover {
