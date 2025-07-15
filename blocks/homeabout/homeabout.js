@@ -17,13 +17,10 @@ export default function decorate() {
     }
   }
 
-  // Replace <li> with button
+  // ✅ Instead of replacing <li>, just add the button-like class
   const ul = document.querySelector('.homeabout-content ul');
   if (ul && ul.children.length > 0) {
     const li = ul.children[0];
-    const button = document.createElement('button');
-    button.innerHTML = li.innerHTML;
-    button.className = 'btn-about';
-    ul.replaceChild(button, li);
+    li.classList.add('btn-about');
   }
 }

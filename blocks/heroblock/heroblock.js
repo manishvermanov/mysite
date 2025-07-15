@@ -3,13 +3,10 @@ export default function decorate(block) {
   if (block) {
     const listItems = heroli.querySelectorAll('li');
     listItems.forEach((li, index) => {
-      const button = document.createElement('button');
-      button.textContent = li.textContent;
-      button.classList.add('hero-btn');
+      li.classList.add('hero-btn');
       if (index === 1) {
-        button.classList.add('btn-transparent');
+        li.classList.add('btn-transparent');
       }
-      li.replaceWith(button);
     });
   }
 

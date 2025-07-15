@@ -50,14 +50,14 @@
   padding-left: 2rem;
 }
 
-.homeabout-content td h5 {
+.homeabout-content td h2 {
   font-size: 2rem;
   font-weight: 700;
   margin-bottom: 0.5rem;
 }
 
-.homeabout-content td h6 {
-  font-size: 1rem;
+.homeabout-content td h3 {
+  font-size: 1.1rem;
   font-weight: 600;
 }
 
@@ -76,6 +76,13 @@
   border-radius: 12px;
   border: 1px solid var(--black);
   transition: all 0.2s ease-out;
+    display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  /* Remove default list styles */
+  list-style: none;
 }
 
 .btn-about:hover {
@@ -146,13 +153,13 @@
 
  
 
-  .homeabout-content td h5 {
-    font-size: 1.2rem;
+  .homeabout-content td h2 {
+    font-size: 1.9rem;
     margin: 0.2rem 0;
   }
 
-  .homeabout-content td h6 {
-    font-size: 0.9rem;
+  .homeabout-content td h3 {
+    font-size: 0.9em;
     margin: 0;
   }
 

@@ -32,7 +32,7 @@
     background-color: white;
     border-radius: 20px;
     overflow: hidden;
-    height: 22rem;
+    height: 21rem;
     transition: transform 0.3s ease;
     display: flex;
     flex-direction: column;

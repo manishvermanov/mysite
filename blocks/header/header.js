@@ -161,7 +161,7 @@ export default async function decorate(block) {
   if (logo) {
     logo.innerHTML = logo.textContent.replace(
       'Home',
-      '<span style="color: #ff9a24;">Home</span>',
+      '<span style="color: #CF1717;">Home</span>',
     );
   }
 
