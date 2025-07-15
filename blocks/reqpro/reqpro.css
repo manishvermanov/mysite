@@ -24,6 +24,7 @@
     display: flex;
     flex-flow: row wrap;
     width: 100%;
+    justify-content: center;
 }
 
 /* Text and image sections */
@@ -31,16 +32,14 @@
     flex: 0 0 48%;
     box-sizing: border-box;
     padding: 20px;
-    margin: 0 30px;
-    margin-top: 2rem;
+    margin: 2rem 30px 0;
 }
 
 .reqpro-image {
     flex: 0 0 42%;
     box-sizing: border-box;
     padding: 20px;
-    margin: 0 30px;
-    margin-top: 2rem;
+    margin: 2rem 30px 0;
 }
 
 .reqpro-text h1 {
@@ -73,7 +72,7 @@
     align-items: center;
     gap: 1.3rem;
     margin-bottom: 1.2rem;
-    flex-wrap: wrap; /* Optional: for responsiveness */
+    flex-wrap: wrap;
 }
 
 .each-step img {
@@ -85,29 +84,12 @@
     transition: transform 0.3s ease-in-out;
 }
 
-.each-step:nth-of-type(1) img {
-    background-color: #b9ff46; /* light red */
-}
-
-.each-step:nth-of-type(2) img {
-    background-color: #fff846; /* light orange */
-}
-
-.each-step:nth-of-type(3) img {
-    background-color: #ff945a; /* light yellow */
-}
-
-.each-step:nth-of-type(4) img {
-    background-color: #46c7ff; /* light green */
-}
-
-.each-step:nth-of-type(5) img {
-    background-color: #9bf6ff; /* light blue */
-}
-
-.each-step:nth-of-type(6) img {
-    background-color: #4fffca; /* light indigo */
-}
+.each-step:nth-of-type(1) img { background-color: #b9ff46; }
+.each-step:nth-of-type(2) img { background-color: #fff846; }
+.each-step:nth-of-type(3) img { background-color: #ff945a; }
+.each-step:nth-of-type(4) img { background-color: #46c7ff; }
+.each-step:nth-of-type(5) img { background-color: #9bf6ff; }
+.each-step:nth-of-type(6) img { background-color: #4fffca; }
 
 .each-step img:hover {
     transform: scale(1.3);
@@ -123,4 +105,159 @@
 .each-step h5:hover {
     color: var(--accent);
     transform: scale(1.05);
+}
+
+/* -------------------- Responsive -------------------- */
+@media (width <= 1024px) {
+    .reqpro-text, .reqpro-image {
+        flex: 0 0 90%;
+        margin: 1.5rem auto;
+        text-align: center;
+    }
+
+    .reqpro-text h1 {
+        font-size: 36px;
+    }
+
+    .reqpro p {
+        font-size: 20px;
+    }
+
+    .reqpro-image img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+@media (width <= 600px) {
+    .reqpro-text h1 {
+        font-size: 28px;
+    }
+
+    .reqpro p {
+        font-size: 18px;
+    }
+
+    .each-step {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .each-step img {
+        margin-bottom: 0.5rem;
+    }
+
+    .each-step h5 {
+        margin-top: 0;
+    }
+}
+
+
+
+@media (width <= 475px) {
+.reqpro-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    margin-top: 6rem;
+}
+
+    .reqpro-background-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 105vh;
+    z-index: -1;
+    display: block;
+  }
+
+  .reqpro-background-wrapper p {
+    height: 100%;
+    margin: 0;
+  }
+
+  .reqpro-background-wrapper picture,
+  .reqpro-background-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center -190px;
+    display: block;
+  }
+
+
+  .reqpro > div {
+    flex-direction: column;
+  }
+
+  .reqpro-text {
+    flex: 0 0 100%;
+    width: 90%;
+    margin: 0 auto;
+    padding: 10px;
+    text-align: center;
+  }
+
+  .reqpro-image {
+    display: none; /* if hiding, make sure container still has enough height */
+  }
+
+  .reqpro-text h1 {
+    font-size: 2rem;
+    line-height: 1.4;
+    text-align: left;
+  }
+
+  
+
+  .reqpro p {
+    margin-top: 1rem;
+    font-size: 1.1rem;
+    line-height: 1;
+    text-align: left;
+    
+  }
+
+  .reqpro-image img {
+    width: 100%;
+    height: auto;
+  }
+
+.each-step {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 0.8rem; /* prevent wrapping */
+  margin: 0.5rem 0;
+}
+
+.reqpro-steps {
+    margin-top: 0.5rem;
+}
+
+
+
+
+.each-step picture {
+  display: flex;
+
+}
+
+.each-step img {
+  width: 40px;
+  height: 40px;
+  padding: 0.3rem;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.each-step h5 {
+  margin-left: 20px;
+  font-size: 0.9rem;
+  text-align: left;
+  line-height: 1.2;
+  font-weight: 500;
+  margin-top: 25px;
+}
+
 }

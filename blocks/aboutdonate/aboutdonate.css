@@ -1,172 +1,237 @@
 .aboutdonate-container {
-    display: flex;
-    justify-content: center;
-    margin-top: -40px;
+  display: flex;
+  justify-content: center;
+  margin-top: -40px;
 }
 
 .aboutdonate-wrapper {
-    max-width: 800px;
-    text-align: center;
-    font-family: "Segoe UI", sans-serif;
-    position: relative;
-    padding-top: 220px;
+  max-width: 800px;
+  text-align: center;
+  font-family: "Segoe UI", sans-serif;
+  position: relative;
+  padding-top: 220px;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .aboutdonate-wrapper h1 {
-    font-size: 2.4rem;
-    margin: 1.5rem 0;
-    color: var(--black);
-    font-weight: 900;
+  font-size: 2.4rem;
+  margin: 1.5rem 0;
+  color: var(--black);
+  font-weight: 900;
 }
 
 .aboutdonate-wrapper::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 200px;
-    width: 100%;
-    background-image: url("../../icons/cover.jpg"); /* Replace with your image path */
-    background-size: cover;
-    background-position: center;
-    border-radius: 12px 12px 0 0;
-    z-index: -1;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 200px;
+  width: 100%;
+  background-image: url("../../icons/cover.jpg");
+  background-size: cover;
+  background-position: center;
+  border-radius: 12px 12px 0 0;
+  z-index: -1;
 }
 
 .aboutdonate-wrapper p {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    margin-bottom: 1rem;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
 }
 
 .aboutdonate-wrapper h3 {
-    margin-top: 2rem;
-    font-size: 1.25rem;
-    color: var(--accent);
+  margin-top: 2rem;
+  font-size: 1.25rem;
+  color: var(--accent);
 }
 
 .aboutdonate-wrapper .button-container {
-    margin-top: 1.5rem;
+  margin-top: 1.5rem;
 }
 
 .aboutdonate-wrapper .button {
-    display: inline-block;
-    background-color: var(--accent);
-    color: black;
-    text-decoration: none;
-    padding: 0.75rem 1.5rem;
-    border-radius: 30px;
-    font-weight: bold;
-    font-size: 1rem;
-    margin-top: 1rem;
-    text-transform: uppercase;
-    transition:
-        background-color 0.3s ease,
-        transform 0.2s ease;
-    margin-bottom: 4rem;
+  display: inline-block;
+  background-color: var(--accent);
+  color: black;
+  text-decoration: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 30px;
+  font-weight: bold;
+  font-size: 1rem;
+  margin-top: 1rem;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-bottom: 4rem;
 }
 
 .aboutdonate-wrapper .button:hover {
-    background-color: var(--black);
-    transform: translateY(-2px);
-    color: white;
+  background-color: var(--black);
+  transform: translateY(-2px);
+  color: white;
 }
 
 .footer-wrapper {
-    margin-top: 0;
+  margin-top: 0;
 }
 
 .amount-input {
-    margin-bottom: 1rem;
+  margin-bottom: 1rem;
 }
 
 .amount-label {
-    margin-right: 0.5rem;
+  margin-right: 0.5rem;
 }
 
 .amount-input-field {
-    padding: 0.4rem;
-    border-radius: 6px;
-    border: 1px solid #ccc;
+  padding: 0.4rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
 }
 
 .upi-helper {
-    margin-top: 0.8rem;
-    font-size: 0.9rem;
+  margin-top: 0.8rem;
+  font-size: 0.9rem;
 }
 
 .upi-helper-link {
-    color: #007bff;
-    cursor: pointer;
-    text-decoration: underline;
+  color: #007bff;
+  cursor: pointer;
+  text-decoration: underline;
 }
 
 .hidden {
-    display: none;
+  display: none;
 }
 
+/* Tooltip */
 .donation-helper-tooltip {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    width: 420px;
-    height: 100px;
-    text-align: center;
-    background-color: #fff8e1;
-    border: 2px solid #ffc107;
-    padding: 1.25rem 1.5rem;
-    border-radius: 12px;
-    box-shadow: 0 6px 20px rgb(0 0 0 / 25%);
-    font-size: 1rem;
-    z-index: 9999;
-    opacity: 0;
-    transform: translateY(20px);
-    transition:
-        opacity 0.35s ease,
-        transform 0.35s ease;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 420px;
+  height: auto;
+  text-align: center;
+  background-color: #fff8e1;
+  border: 2px solid #ffc107;
+  padding: 1.25rem 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgb(0 0 0 / 25%);
+  font-size: 1rem;
+  z-index: 9999;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
 }
 
 .donation-helper-tooltip.visible {
-    opacity: 1;
-    transform: translateY(0);
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .donation-helper-tooltip.hidden {
-    display: none;
+  display: none;
 }
 
 .donation-helper-tooltip p {
-    margin: 0;
-    color: #444;
-    line-height: 1.5;
+  margin: 0;
+  color: #444;
+  line-height: 1.5;
 }
 
 .donation-helper-tooltip a.tooltip-link {
-    color: #ff5722;
-    text-decoration: underline;
-    font-weight: 800;
-    transition: color 0.3s ease;
-    font-size: 1.2rem;
+  color: #ff5722;
+  text-decoration: underline;
+  font-weight: 800;
+  transition: color 0.3s ease;
+  font-size: 1.2rem;
 }
 
 .donation-helper-tooltip a.tooltip-link:hover {
-    color: #d84315;
-    text-decoration: underline;
+  color: #d84315;
+  text-decoration: underline;
 }
 
 .tooltip-close {
-    background: none;
-    border: none;
-    font-size: 1.4rem;
-    font-weight: bold;
-    position: absolute;
-    top: 8px;
-    right: 12px;
-    cursor: pointer;
-    color: #666;
-    transition: color 0.2s ease;
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+  font-weight: bold;
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  cursor: pointer;
+  color: #666;
+  transition: color 0.2s ease;
 }
 
 .tooltip-close:hover {
-    color: #000;
+  color: #000;
+}
+
+/* ------------------------------
+   📱 Responsive Styles (Mobile)
+------------------------------ */
+@media (width <= 768px) {
+.aboutdonate-container{
+    padding: 0 20px;
+}
+
+  .aboutdonate-wrapper {
+    padding-top: 160px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .aboutdonate-wrapper h1 {
+    font-size: 1.8rem;
+  }
+
+  .aboutdonate-wrapper::before {
+    height: 160px;
+    border-radius: 10px 10px 0 0;
+  }
+
+  .aboutdonate-wrapper p {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .aboutdonate-wrapper .button {
+    font-size: 0.95rem;
+    padding: 0.6rem 1.2rem;
+  }
+
+ .donation-helper-tooltip {
+  position: fixed;
+  width: 90%;
+  height: 100px;
+  text-align: center;
+  background-color: #fff8e1;
+  border: 2px solid #ffc107;
+  padding: 1.25rem 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgb(0 0 0 / 25%);
+  font-size: 1rem;
+  z-index: 9999;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+
+  /* NEW FLEX STYLES */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+  .donation-helper-tooltip a.tooltip-link {
+    font-size: 1rem;
+  }
+
+  .tooltip-close {
+    font-size: 1.2rem;
+  }
 }

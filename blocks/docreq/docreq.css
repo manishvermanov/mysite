@@ -70,3 +70,47 @@
 .docreq-wrapper > .docreq > div > div picture:hover {
     transform: translateY(-10px);
 }
+
+@media (width <= 475px) {
+  .docreq > div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .docreq > div > div {
+    flex: 0 0 38%; /* 2 cards per row */
+    box-sizing: border-box;
+    text-align: center;
+  }
+
+  .docreq > div > div p {
+    margin: 0;
+  }
+
+  .docreq > div > div picture {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff0d9;
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 0.5rem;
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgb(0 0 0 / 10%);
+  }
+
+  .docreq > div > div picture img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+  }
+
+  .docreq > div > div h1 {
+    font-size: 1rem;
+    margin-top: 0.5rem;
+    line-height: 1.3;
+  }
+}

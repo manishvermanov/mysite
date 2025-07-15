@@ -150,11 +150,18 @@
         display: flex;
         flex-direction: row;
         justify-content: center;
-        gap: 1rem;
+        gap: 2rem;
+        width: 100%;
+    }
+
+    .catcards ul{
+        display: flex;
+        flex: 1;
     }
 
     .catcards li {
         flex: 1;
+        
     }
 
     .actcards {

@@ -46,8 +46,14 @@ export default function decorate(block) {
       amountInput.placeholder = 'e.g., 500';
       amountInput.className = 'amount-input-field';
 
+      const errorMsg = document.createElement('div');
+      errorMsg.className = 'error-msg';
+      errorMsg.style.display = 'none';
+      errorMsg.textContent = 'Please enter a valid donation amount.';
+
       amountWrapper.appendChild(amountLabel);
       amountWrapper.appendChild(amountInput);
+      amountWrapper.appendChild(errorMsg);
       donateBtn.parentElement.insertBefore(amountWrapper, donateBtn);
 
       const loadRazorpayScript = () => new Promise((resolve, reject) => {
@@ -97,16 +103,17 @@ export default function decorate(block) {
           return;
         }
 
+        const enteredAmount = parseInt(amountInput.value, 10);
+        if (Number.isNaN(enteredAmount) || enteredAmount <= 0) {
+          errorMsg.style.display = 'block';
+          return;
+        }
+        errorMsg.style.display = 'none';
+
         setTimeout(() => showTooltip(tooltip), 5000);
 
         try {
           await loadRazorpayScript();
-
-          const enteredAmount = parseInt(amountInput.value, 10);
-          if (Number.isNaN(enteredAmount) || enteredAmount <= 0) {
-            showToast('Please enter a valid donation amount.', 'error');
-            return;
-          }
 
           const options = {
             key: 'rzp_test_hRCqzEQGaZ88Pm',

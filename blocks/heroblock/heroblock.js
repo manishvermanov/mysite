@@ -20,6 +20,13 @@ export default function decorate(block) {
     const imageWrapper = wrapperDivs[1].querySelector('div');
     if (imageWrapper) {
       imageWrapper.classList.add('hero-images');
+
+      // ✅ Remove lazy loading from all hero images
+      const heroImgs = imageWrapper.querySelectorAll('img[loading="lazy"]');
+      heroImgs.forEach((img) => {
+        img.removeAttribute('loading');
+        img.setAttribute('fetchpriority', 'low');
+      });
     }
   }
 
@@ -28,5 +35,12 @@ export default function decorate(block) {
   );
   if (wrapper) {
     wrapper.classList.add('hero-background-wrapper');
+
+    // ✅ Fix lazy-loading on background LCP image
+    const bgImg = wrapper.querySelector('img[loading="lazy"]');
+    if (bgImg) {
+      bgImg.removeAttribute('loading');
+      bgImg.setAttribute('fetchpriority', 'high');
+    }
   }
 }

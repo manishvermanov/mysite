@@ -182,7 +182,7 @@ export default async function decorate(block) {
     adoptLi.setAttribute('aria-expanded', 'false');
 
     const adoptLink = document.createElement('a');
-    adoptLink.href = '/apply'; // change this to your actual adopt form path
+    adoptLink.href = 'http://localhost:3000/adopt'; // change this to your actual adopt form path
     adoptLink.textContent = 'Adopt Now 🐾';
     adoptLink.className = 'mobile-adopt-link';
 
