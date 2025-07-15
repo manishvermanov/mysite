@@ -26,3 +26,26 @@ footer {
     height: 180px;
     border-bottom: 1px solid rgb(255 255 255 / 50%);
 }
+
+@media (width <= 475px) {
+  footer {
+    flex-direction: column;
+    padding: 20px 15px;
+    align-items: stretch;
+    text-align: center;
+  }
+
+  .footer > div > div {
+    flex-direction: column;
+  }
+
+  .footer-brands-wrapper,
+  .footer-links-wrapper,
+  .footer-contact-wrapper {
+    width: 100%;
+    height: auto;
+    padding: 25px 10px;
+    border-bottom: 1px solid rgb(255 255 255 / 30%);
+  }
+
+}

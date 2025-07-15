@@ -36,4 +36,4 @@ npm run lint
 1. Start AEM Proxy: `aem up` (opens your browser at `http://localhost:3000`)
 1. Open the `{repo}
 
-` directory in your favorite IDE and start coding :)directoryinyourfavoriteIDEandstartcoding
+` directory in your favorite IDE and start coding :)directoryinyourfavoriteideandstartcodingdirectoryinyourfavoriteIDEandstartcoding
