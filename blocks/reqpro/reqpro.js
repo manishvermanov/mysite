@@ -30,7 +30,7 @@ export default function decorate() {
 
       if (
         node.nodeType === Node.ELEMENT_NODE
-        && node.matches('h5#minimum-age-requirement-eg-21-years')
+        && node.matches('h3#minimum-age-requirement-eg-21-years')
       ) {
         // Start collecting from the element BEFORE this h5
         // So go back to find the previous <p> and include that too
@@ -62,7 +62,7 @@ export default function decorate() {
     const current = children[i];
     const next = children[i + 1];
 
-    if (current.tagName === 'P' && next.tagName === 'H5') {
+    if (current.tagName === 'P' && next.tagName === 'H3') {
       const wrapper1 = document.createElement('div');
       wrapper1.className = 'each-step';
 

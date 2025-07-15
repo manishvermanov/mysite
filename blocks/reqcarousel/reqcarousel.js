@@ -21,8 +21,11 @@ export default function decorate(block) {
   // Helper: update card highlighting
   function updateHighlight() {
     cards.forEach((card, i) => {
-      card.style.backgroundColor = i === activeIndex ? 'var(--accent)' : '#ebe4e4';
+      const isActive = i === activeIndex;
+      card.style.backgroundColor = isActive ? 'var(--accent)' : '#ebe4e4';
+      card.style.color = isActive ? '#ffffff' : '#000000'; // ✅ text color change
     });
+
     const cardWidth = cards[0]?.offsetWidth || 260;
     const gap = 32; // 2rem
     block.scrollTo({

@@ -32,7 +32,7 @@
 }
 
 /* Each Q&A Block */
-.faq-wrapper h4 {
+.faq-wrapper h2 {
     font-size: 1.2rem;
     cursor: pointer;
     position: relative;
@@ -43,7 +43,7 @@
 }
 
 /* Arrow Indicator */
-.faq-wrapper h4::after {
+.faq-wrapper h2::after {
     content: "▾";
     font-size: 1.4rem;
     position: absolute;
@@ -52,7 +52,7 @@
 }
 
 /* Answer Styling */
-.faq-wrapper h5 {
+.faq-wrapper h3 {
     font-weight: 400;
     font-size: 1rem;
     margin: 0.4rem 0 1rem;
@@ -65,17 +65,17 @@
 }
 
 /* Expanded State */
-.faq-wrapper h4.active::after {
+.faq-wrapper h2.active::after {
     transform: rotate(180deg);
 }
 
-.faq-wrapper h4.active + h5 {
+.faq-wrapper h2.active + h3 {
     max-height: 200px;
     opacity: 1;
 }
 
 /* Removed h5 bottom line */
-.faq-wrapper h5::after {
+.faq-wrapper h3::after {
     display: none;
 }
 
@@ -102,16 +102,16 @@
     padding: 1.5rem 0;
   }
 
-  .faq-wrapper h4 {
+  .faq-wrapper h2 {
     font-size: 1.05rem;
     padding-right: 1.2rem;
   }
 
-  .faq-wrapper h4::after {
+  .faq-wrapper h2::after {
     font-size: 1.2rem;
   }
 
-  .faq-wrapper h5 {
+  .faq-wrapper h3 {
     font-size: 0.95rem;
   }
 }
