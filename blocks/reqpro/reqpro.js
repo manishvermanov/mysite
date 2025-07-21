@@ -30,7 +30,8 @@ export default function decorate() {
 
       if (
         node.nodeType === Node.ELEMENT_NODE
-        && node.matches('h3#minimum-age-requirement-eg-21-years')
+        && (node.matches('h3#minimum-age-requirement-eg-21-years')
+          || node.matches('h3#न्यूनतम-उम्र-21-वर्ष-या-उससे-अधिक'))
       ) {
         // Start collecting from the element BEFORE this h5
         // So go back to find the previous <p> and include that too

@@ -1,287 +1,287 @@
 /* ===== Base Section Styling ===== */
 .section.adopt-container {
-  padding: 2rem;
-  background-color: #f9f9f9;
-  margin-top: 6rem;
+    padding: 2rem;
+    background-color: #f9f9f9;
+    margin-top: 6rem;
 }
 
 .adopt-container > .default-content-wrapper h1 {
-  text-align: center;
-  margin-bottom: 2rem;
-  font-weight: 800;
-  font-size: 2.4rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    font-weight: 800;
+    font-size: 2.4rem;
 }
 
 .adopt-wrapper {
-  position: relative;
-  z-index: 2;
-  max-width: 800px;
-  margin: 0 auto;
-  border-radius: 12px;
-  padding: 2rem;
-  background-color: rgb(255 255 255 / 62.3%);
-  box-shadow: 0 4px 12px rgb(0 0 0 / 10%);
-  border: 2px solid black;
-  box-sizing: border-box;
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    margin: 0 auto;
+    border-radius: 12px;
+    padding: 2rem;
+    background-color: rgb(255 255 255 / 62.3%);
+    box-shadow: 0 4px 12px rgb(0 0 0 / 10%);
+    border: 2px solid black;
+    box-sizing: border-box;
 }
 
 /* ===== Form Styling ===== */
 .adopt form {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 20px;
 }
 
 .field-wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
 }
 
 .field-wrapper label {
-  font-weight: 600;
-  font-size: 1rem;
+    font-weight: 600;
+    font-size: 1rem;
 }
 
 .field-wrapper input,
 .field-wrapper select,
 .field-wrapper textarea {
-  padding: 0.75rem 1rem;
-  font-size: 1rem;
-  border: 1px solid #000;
-  border-radius: 8px;
-  outline: none;
-  transition: border 0.3s ease;
-  height: 45px;
-  box-sizing: border-box;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    border: 1px solid #000;
+    border-radius: 8px;
+    outline: none;
+    transition: border 0.3s ease;
+    height: 45px;
+    box-sizing: border-box;
 }
 
 .field-wrapper input {
-  height: 38px;
+    height: 38px;
 }
 
 .field-wrapper textarea {
-  height: 100px;
+    height: 100px;
 }
 
 /* ===== Button Styling ===== */
 button[type="submit"] {
-  padding: 0.75rem 1.25rem;
-  background-color: var(--black);
-  color: white;
-  font-weight: bold;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+    padding: 0.75rem 1.25rem;
+    background-color: var(--black);
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 button[type="submit"]:hover {
-  background-color: var(--accent);
-  color: black;
+    background-color: var(--accent);
+    color: black;
 }
 
 /* ===== Radio Option Styling ===== */
 .radio-wrapper {
-  display: flex;
-  flex-flow: row wrap;
-  align-items: center;
-  gap: 1rem;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    gap: 1rem;
 }
 
 .radio-option {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 /* ===== Pet Image Preview (Inside Form) ===== */
 .pet-photo-preview-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 8px;
-  height: 220px;
-  width: 200px;
-  margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    height: 220px;
+    width: 200px;
+    margin-top: 1rem;
 }
 
 .form-photo-card {
-  width: 100%;
-  height: 250px;
-  border-radius: 8px;
-  object-fit: cover;
-  box-shadow: 0 2px 6px rgb(0 0 0 / 15%);
+    width: 100%;
+    height: 250px;
+    border-radius: 8px;
+    object-fit: cover;
+    box-shadow: 0 2px 6px rgb(0 0 0 / 15%);
 }
 
 /* ===== Hide Wrapper Utility (Optional) ===== */
 .hidden-wrapper {
-  display: none !important;
+    display: none !important;
 }
 
 /* Top row layout for form */
 .form-top-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  margin-bottom: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
 }
 
 /* Left column (inputs) */
 .form-left {
-  flex: 1 1 60%;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+    flex: 1 1 60%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 
 /* Right column (image) */
 .form-right {
-  flex: 1 1 35%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    flex: 1 1 35%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* Remove bottom margin if needed */
 .form-top-row.no-bottom-margin {
-  margin-bottom: 0;
+    margin-bottom: 0;
 }
 
 select option:first-child {
-  display: none;
+    display: none;
 }
 
 /* Make adopt-container behave like a hero section */
 .adopt-container {
-  position: relative;
-  width: 100%;
-  min-height: 100vh;
-  overflow: hidden;
-  z-index: 1;
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+    z-index: 1;
 }
 
 /* Background image setup */
 .adopt-container .default-content-wrapper picture,
 .adopt-container .default-content-wrapper img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  z-index: -1;
-  opacity: 0.8;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: -1;
+    opacity: 0.8;
 }
 
 .adoptmodal-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex; /* Ensure visibility */
-  justify-content: center;
-  align-items: center;
-  background-color: rgb(0 0 0 / 60%);
-  z-index: 10000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex; /* Ensure visibility */
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(0 0 0 / 60%);
+    z-index: 10000;
 }
 
 .adoptmodal-wrapper {
-  background-color: #fff;
-  padding: 2rem;
-  border-radius: 8px;
-  text-align: center;
-  max-width: 400px;
-  width: 90%;
-  position: relative;
-  box-shadow: 0 0 20px rgb(0 0 0 / 30%);
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    position: relative;
+    box-shadow: 0 0 20px rgb(0 0 0 / 30%);
 }
 
 .modal-close-btn {
-  position: absolute;
-  top: 0.5rem;
-  right: 0.7rem;
-  background: transparent;
-  border: none;
-  font-size: 1.3rem;
-  cursor: pointer;
+    position: absolute;
+    top: 0.5rem;
+    right: 0.7rem;
+    background: transparent;
+    border: none;
+    font-size: 1.3rem;
+    cursor: pointer;
 }
 
 /* Style for invalid input */
 input.invalid,
 textarea.invalid,
 select.invalid {
-  border-color: red;
-  outline: none;
-  box-shadow: 0 0 4px rgb(255 0 0 / 30%);
+    border-color: red;
+    outline: none;
+    box-shadow: 0 0 4px rgb(255 0 0 / 30%);
 }
 
 /* Error message styling */
 .field-error {
-  color: red;
-  font-size: 0.85rem;
-  margin-top: 4px;
-  transition: all 0.2s ease-in-out;
-  display: none;
+    color: red;
+    font-size: 0.85rem;
+    margin-top: 4px;
+    transition: all 0.2s ease-in-out;
+    display: none;
 }
 
 /* ===== Responsive Adjustments ===== */
 @media (width <= 768px) {
-  .adopt-wrapper {
-    padding: 1.5rem;
-  }
+    .adopt-wrapper {
+        padding: 1.5rem;
+    }
 
-  .adopt-container > .default-content-wrapper h1 {
-    font-size: 2rem;
-  }
+    .adopt-container > .default-content-wrapper h1 {
+        font-size: 2rem;
+    }
 
-  .form-top-row {
-    flex-direction: column;
-    gap: 1rem;
-  }
+    .form-top-row {
+        flex-direction: column;
+        gap: 1rem;
+    }
 
-  .form-left,
-  .form-right {
-    flex: 1 1 100%;
-  }
+    .form-left,
+    .form-right {
+        flex: 1 1 100%;
+    }
 
-  .form-photo-card {
-    height: 200px;
-  }
+    .form-photo-card {
+        height: 200px;
+    }
 
-  .pet-photo-preview-wrapper {
-    height: auto;
-    width: 100%;
-  }
+    .pet-photo-preview-wrapper {
+        height: auto;
+        width: 100%;
+    }
 
-  .radio-option {
-    margin-left: 0;
-  }
+    .radio-option {
+        margin-left: 0;
+    }
 
-  button[type="submit"] {
-    width: 100%;
-  }
+    button[type="submit"] {
+        width: 100%;
+    }
 }
 
 @media (width <= 480px) {
-  .adopt-container > .default-content-wrapper h1 {
-    font-size: 1.6rem;
-  }
+    .adopt-container > .default-content-wrapper h1 {
+        font-size: 1.6rem;
+    }
 
-  .field-wrapper input,
-  .field-wrapper select,
-  .field-wrapper textarea {
-    font-size: 0.95rem;
-  }
+    .field-wrapper input,
+    .field-wrapper select,
+    .field-wrapper textarea {
+        font-size: 0.95rem;
+    }
 
-  .adopt-wrapper {
-    padding: 1rem;
-  }
+    .adopt-wrapper {
+        padding: 1rem;
+    }
 
-  .adopt form {
-    padding: 1rem;
-  }
+    .adopt form {
+        padding: 1rem;
+    }
 }

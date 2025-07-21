@@ -8,16 +8,20 @@ async function createForm(formHref, submitHref) {
   const form = document.createElement('form');
   form.dataset.action = submitHref;
 
-  const fields = await Promise.all(json.data.map((fd) => createField(fd, form)));
+  const fields = await Promise.all(
+    json.data.map((fd) => createField(fd, form)),
+  );
   fields.forEach((field) => {
     if (field) form.append(field);
   });
 
   const fieldsets = form.querySelectorAll('fieldset');
   fieldsets.forEach((fieldset) => {
-    form.querySelectorAll(`[data-fieldset="${fieldset.name}"`).forEach((field) => {
-      fieldset.append(field);
-    });
+    form
+      .querySelectorAll(`[data-fieldset="${fieldset.name}"`)
+      .forEach((field) => {
+        fieldset.append(field);
+      });
   });
 
   return form;
@@ -63,7 +67,9 @@ function sendEmail(payload) {
   else if (followUp === 'Meet Pet on Video Call') templateId = 'template_xyz123';
 
   if (!templateId) {
-    throw new Error('No valid template ID found for selected follow-up option.');
+    throw new Error(
+      'No valid template ID found for selected follow-up option.',
+    );
   }
 
   return window.emailjs.send('service_dqo4wzw', templateId, templateParams);
@@ -174,7 +180,9 @@ export default async function decorate(block) {
   window.emailjs.init('ibRHtKsS0uRA-oFfN');
 
   const links = [...block.querySelectorAll('a')].map((a) => a.href);
-  const formLink = links.find((link) => link.startsWith(window.location.origin) && link.endsWith('.json'));
+  const formLink = links.find(
+    (link) => link.startsWith(window.location.origin) && link.endsWith('.json'),
+  );
   const submitLink = links.find((link) => link !== formLink);
   if (!formLink || !submitLink) return;
 
@@ -200,9 +208,15 @@ export default async function decorate(block) {
     img.className = 'form-photo-card';
     wrapper.appendChild(img);
 
-    const fullnameField = form.querySelector('#form-fullname')?.closest('.field-wrapper');
-    const emailField = form.querySelector('#form-email')?.closest('.field-wrapper');
-    const phoneField = form.querySelector('#form-phonenumber')?.closest('.field-wrapper');
+    const fullnameField = form
+      .querySelector('#form-fullname')
+      ?.closest('.field-wrapper');
+    const emailField = form
+      .querySelector('#form-email')
+      ?.closest('.field-wrapper');
+    const phoneField = form
+      .querySelector('#form-phonenumber')
+      ?.closest('.field-wrapper');
 
     if (fullnameField && emailField && phoneField) {
       const combinedWrapper = document.createElement('div');
@@ -221,7 +235,9 @@ export default async function decorate(block) {
       combinedWrapper.appendChild(leftCol);
       combinedWrapper.appendChild(rightCol);
 
-      const breedField = form.querySelector('#form-breed')?.closest('.field-wrapper');
+      const breedField = form
+        .querySelector('#form-breed')
+        ?.closest('.field-wrapper');
       form.insertBefore(combinedWrapper, breedField);
     }
   }
@@ -244,4 +260,14 @@ export default async function decorate(block) {
   });
 
   addCustomValidation(form);
+
+  // LCP Optimization: Force eager loading and fetchpriority for LCP image
+  const lcpImage = document.querySelector(
+    '.default-content-wrapper picture img',
+  );
+  if (lcpImage) {
+    lcpImage.setAttribute('loading', 'eager');
+    lcpImage.setAttribute('fetchpriority', 'high');
+    lcpImage.setAttribute('decoding', 'async');
+  }
 }

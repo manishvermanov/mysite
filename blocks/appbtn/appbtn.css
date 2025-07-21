@@ -1,7 +1,6 @@
 .appbtn p {
     display: flex;
     align-items: center;
-    gap: 1rem;
     font-size: 1.3rem;
     font-weight: 500;
     color: var(--black);
@@ -9,13 +8,12 @@
     background-color: transparent;
     border: none;
     cursor: pointer;
-    margin-right: 50px;
+    margin-right: 20px;
 }
 
 .btn2 {
     display: flex;
     align-items: center;
-    gap: 1rem;
     font-size: 1.2rem;
     font-weight: 500;
     color: var(--black);
@@ -29,12 +27,6 @@
 
 .btn2:hover {
     transform: translateX(10px);
-}
-
-.appbtn img {
-    width: 28px;
-    height: auto;
-    margin-top: 7px;
 }
 
 .afterpaw img {

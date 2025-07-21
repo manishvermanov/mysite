@@ -8,7 +8,9 @@ export default function decorate() {
     }
 
     // Inject <h1> at the top of .homeabout.block > div
-    const originalHeading = homeabout.querySelector('.homeabout-content h1#about-us');
+    const originalHeading = homeabout.querySelector(
+      '.homeabout-content h1#about-us',
+    );
     if (originalHeading) {
       const mobileHeading = originalHeading.cloneNode(true);
       mobileHeading.id = 'about-us-mobile';

@@ -1,211 +1,180 @@
-export default async function decorate(block) {
-  // Locate the block’s container structure
-  const wrapper = block.closest('.petscard-wrapper');
-  if (!wrapper) {
-    // wrapper not found
-    return;
-  }
+const API_KEY = 'live_KfTFOTZFqrx7MFhD8dzHnKFP8FCL1yfsgTMn3gY4TTjX7n7aQkeUZ3yDizq7MXGN';
+const DOG_API_URL = 'https://api.thedogapi.com/v1/images/search?limit=6&has_breeds=true';
 
-  const container = block.querySelector(':scope > div');
-  if (!container || container.children.length < 2) {
-    // conatiner not found
-    return;
-  }
+const updateStaticAdoptLinks = () => {
+  const types = ['catcards', 'hamstercards', 'rabbitcards'];
 
-  // Apply layout classes
-  container.classList.add('cardparent');
+  types.forEach((type) => {
+    const petType = type.replace('cards', '');
+    const cards = document.querySelectorAll(`.${type} .animalcard`);
 
-  const categoryList = container.children[0];
-  const cardsArea = container.children[1];
+    cards.forEach((card) => {
+      const image = card.querySelector('.card-front img')?.src;
+      const name = card.querySelector('.card-front p:last-of-type')?.textContent?.trim();
+      const breed = card.querySelector('.card-back h2 strong')?.textContent?.trim();
 
-  categoryList.classList.add('catcards');
-  cardsArea.classList.add('actcards');
-  cardsArea.id = 'animalCards';
+      const id = Array.from(card.querySelectorAll('.card-back p'))
+        .find((p) => p.textContent.includes('Pet ID:'))
+        ?.textContent?.split(':')?.[1]?.trim();
 
-  // Add flip-card structure classes
-  const cards = cardsArea.querySelectorAll('.character-card');
-  cards.forEach((card) => {
-    card.classList.add('flip-card');
+      const adoptBtn = card.querySelector('.card-back .button');
 
-    const cardInner = card.querySelector('.card-inner');
-    if (cardInner) cardInner.classList.add('flip-card-inner');
+      if (image && name && breed && id && adoptBtn) {
+        const adoptURL = new URL('/en/adopt', window.location.origin);
+        adoptURL.searchParams.set('PetImage', image);
+        adoptURL.searchParams.set('Breed', breed);
+        adoptURL.searchParams.set('PetType', petType.charAt(0).toUpperCase() + petType.slice(1));
+        adoptURL.searchParams.set('PetID', id);
 
-    const front = card.querySelector('.card-front');
-    if (front) front.classList.add('flip-card-front');
-
-    const back = card.querySelector('.card-back');
-    if (back) back.classList.add('flip-card-back');
-  });
-
-  // Static Cards
-  const animalCards = {
-    cat: [
-      {
-        front: 'images/pets/cat1.jpg',
-        back: 'images/pets/cat1-back.webp',
-        name: 'Shorthair Cat',
-        alt: 'Whiskers Cat',
-        breed_info: {
-          weight: '3.5 – 5.5 kg',
-          height: '23 – 28 cm',
-          life_span: '12 - 15 years',
-          temperament: 'Friendly, Easygoing, Intelligent',
-        },
-        id: 'CA0001',
-      },
-      {
-        front: 'images/pets/cat2.jpg',
-        back: 'images/pets/cat2-back.webp',
-        name: 'Longhair Cat',
-        alt: 'Longhair Cat',
-        breed_info: {
-          weight: '4 - 6.5 kg',
-          height: '25 - 30 cm',
-          life_span: '12 - 17 years',
-          temperament: 'Curious, Gentle, Loyal',
-        },
-        id: 'CA0002',
-      },
-    ],
-    bird: [
-      {
-        front: 'images/pets/5.webp',
-        back: 'images/pets/3.webp',
-        name: 'Eclectus Parrot',
-        alt: 'Squawks',
-        breed_info: {
-          weight: '0.4 - 0.6 kg',
-          height: '30 – 35 cm',
-          life_span: '30 – 40 years',
-          temperament: 'Curious, Gentle, Loyal',
-        },
-        id: 'BI0001',
-      },
-      {
-        front: 'images/pets/6.webp',
-        back: 'images/pets/3.webp',
-        name: 'Feather Fury',
-        alt: 'Feather Fury',
-        breed_info: {
-          weight: '0.5 - 0.7 kg',
-          height: '30 – 55 cm',
-          life_span: '30 – 60 years',
-          temperament: 'Affectionate, Social, Demanding',
-        },
-        id: 'BI0002',
-      },
-    ],
-  };
-
-  // Dog API
-  const API_KEY = 'live_KfTFOTZFqrx7MFhD8dzHnKFP8FCL1yfsgTMn3gY4TTjX7n7aQkeUZ3yDizq7MXGN';
-  const DOG_API_URL = 'https://api.thedogapi.com/v1/images/search?limit=6&has_breeds=true';
-
-  const getOrGenerateDogId = (url) => {
-    const idMap = JSON.parse(localStorage.getItem('dogIdMap') || '{}');
-    if (idMap[url]) return idMap[url];
-    const prefix = 'DO';
-    const counter = Object.keys(idMap).length + 1;
-    const id = `${prefix}${String(counter).padStart(4, '0')}`;
-    idMap[url] = id;
-    localStorage.setItem('dogIdMap', JSON.stringify(idMap));
-    return id;
-  };
-
-  async function loadDogCards() {
-    try {
-      const res = await fetch(DOG_API_URL, {
-        headers: { 'x-api-key': API_KEY },
-      });
-      const data = await res.json();
-      return data.map((dog) => {
-        const breed = dog.breeds?.[0] || {};
-        return {
-          front: dog.url,
-          name: breed.name || 'Unknown Doggo',
-          alt: breed.name || 'Dog',
-          breed_info: {
-            weight: `${breed.weight?.metric} kg` || 'N/A',
-            height: `${breed.height?.metric} cm` || 'N/A',
-            life_span: breed.life_span || 'N/A',
-            temperament: breed.temperament || 'Unknown',
-          },
-          id: getOrGenerateDogId(dog.url),
-        };
-      });
-    } catch (err) {
-      // dog api error
-      return [];
-    }
-  }
-
-  // Render Cards
-  function renderCards(cardstemp) {
-    if (!cardstemp?.length) {
-      cardstemp.innerHTML = '<p>No cards to display</p>';
-      return;
-    }
-
-    cardsArea.innerHTML = cardstemp
-      .map((card) => {
-        const back = card.breed_info
-          ? `<h2>${card.name}</h2>
-             <p><strong>Pet ID:</strong> ${card.id}</p>
-             <p><strong>Weight:</strong> ${card.breed_info.weight}</p>
-             <p><strong>Height:</strong> ${card.breed_info.height}</p>
-             <p><strong>Life Span:</strong> ${card.breed_info.life_span}</p>
-             <p><strong>Temperament:</strong> ${card.breed_info.temperament}</p>`
-          : `<p>No breed info<br><strong>Pet ID:</strong> ${card.id}</p>`;
-
-        const adoptLink = `https://main--mysite--manishvermanov.aem.page/adopt?PetID=${card.id}&Breed=${encodeURIComponent(card.name)}&PetImage=${encodeURIComponent(card.front)}`;
-
-        return `
-        <div class="character-card">
-          <div class="card-inner">
-            <div class="card-front">
-              <img src="${card.front}" alt="${card.alt}" />
-              <p>${card.name}</p>
-            </div>
-            <div class="card-back">
-              ${back}
-              <a class="adopt-btn" href="${adoptLink}">Adopt</a>
-            </div>
-          </div>
-        </div>`;
-      })
-      .join('');
-
-    // Apply flip-card classes after rendering
-    const newCards = cardsArea.querySelectorAll('.character-card');
-    newCards.forEach((card) => {
-      card.classList.add('flip-card');
-      const cardInner = card.querySelector('.card-inner');
-      if (cardInner) cardInner.classList.add('flip-card-inner');
-      const front = card.querySelector('.card-front');
-      if (front) front.classList.add('flip-card-front');
-      const back = card.querySelector('.card-back');
-      if (back) back.classList.add('flip-card-back');
-    });
-  }
-
-  // Attach Click Events to Menu Items
-  const menuItems = categoryList.querySelectorAll('li');
-  menuItems.forEach((item) => {
-    item.addEventListener('click', async () => {
-      menuItems.forEach((li) => li.classList.remove('active'));
-      item.classList.add('active');
-      const type = item.textContent.toLowerCase();
-
-      if (type === 'dog') {
-        const dogs = await loadDogCards();
-        renderCards(dogs);
-      } else {
-        renderCards(animalCards[type] || []);
+        adoptBtn.href = adoptURL.toString();
       }
     });
   });
+};
 
-  // Load Dogs by Default
-  const defaultDogs = await loadDogCards();
-  renderCards(defaultDogs);
+const renderDogCards = (container, dogs) => {
+  dogs.forEach((dog) => {
+    const card = document.createElement('div');
+    card.className = 'animalcard flip-card';
+
+    const adoptLink = `/en/adopt?${new URLSearchParams({
+      PetImage: dog.image,
+      Breed: dog.name,
+      PetType: 'Dog',
+      PetID: dog.id,
+    }).toString()}`;
+
+    card.innerHTML = `
+      <div class="card-inner flip-card-inner">
+        <div class="card-front flip-card-front">
+          <div>
+            <picture>
+              <img loading="lazy" alt='${dog.name}' src='${dog.image}' width='300' height='300'>
+            </picture>
+            <p>${dog.name}</p>
+          </div>
+        </div>
+        <div class="card-back flip-card-back">
+          <div data-align="center">
+            <h2><strong>${dog.name}</strong></h2>
+            <p><strong>Pet ID:</strong> ${dog.id}</p>
+            <p><strong>Weight:</strong> ${dog.weight}</p>
+            <p><strong>Height:</strong> ${dog.height}</p>
+            <p><strong>Life Span:</strong> ${dog.lifespan}</p>
+            <p><strong>Temperament:</strong> ${dog.temperament}</p>
+            <p class="button-container">
+              <a href='${adoptLink}' title='Adopt' class='button'>Adopt</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    `;
+
+    container.appendChild(card);
+  });
+
+  setTimeout(() => {
+    if (document.getElementById('quiz-toast')) return;
+
+    const toast = document.createElement('div');
+    toast.id = 'quiz-toast';
+    toast.innerHTML = `
+      <span>Discover the Animal Aligned with Your Energy</span>
+      <a href="/quiz" class="quiz-toast-btn">Take the Quiz</a>
+      <span class="quiz-toast-close">&times;</span>
+    `;
+
+    document.body.appendChild(toast);
+    toast.querySelector('.quiz-toast-close').addEventListener('click', () => toast.remove());
+  }, 3000);
+};
+
+const loadDogCards = async (container) => {
+  const cacheKey = 'cachedDogs';
+  const cached = localStorage.getItem(cacheKey);
+
+  if (cached) {
+    const dogs = JSON.parse(cached);
+    renderDogCards(container, dogs);
+    return;
+  }
+
+  try {
+    const resp = await fetch(DOG_API_URL, {
+      headers: { 'x-api-key': API_KEY },
+    });
+
+    const data = await resp.json();
+
+    const dogArray = data
+      .filter((entry) => entry.breeds && entry.breeds.length > 0)
+      .map((entry, i) => {
+        const dog = entry.breeds[0];
+        return {
+          name: dog.name || 'Unknown',
+          id: `DO0${200 + i + 1}`,
+          weight: `${dog.weight?.metric || 'N/A'} kg`,
+          height: `${dog.height?.metric || 'N/A'} cm`,
+          lifespan: dog.life_span || 'Unknown',
+          temperament: dog.temperament || 'Not Available',
+          image: entry.url || 'https://via.placeholder.com/300?text=No+Image',
+        };
+      });
+
+    localStorage.setItem(cacheKey, JSON.stringify(dogArray));
+    renderDogCards(container, dogArray);
+  } catch (err) {
+    // Handle error silently or log if needed
+  }
+};
+
+export default async function decorate(block) {
+  const wrapper = block.firstElementChild;
+  if (!wrapper) return;
+
+  const dogcardsBlock = document.querySelector('.dogcards');
+  const [filterDiv, cardsSection] = wrapper.children;
+
+  filterDiv.classList.add('filter-section');
+  cardsSection.classList.add('cards-section');
+
+  const ul = filterDiv.querySelector('ul');
+  ul.classList.add('filter-list');
+
+  const listItems = ul.querySelectorAll('li');
+  listItems[0]?.classList.add('active');
+
+  const typeMap = {
+    Dog: 'dogcards',
+    Cat: 'catcards',
+    Rabbit: 'rabbitcards',
+    Hamster: 'hamstercards',
+  };
+
+  const cardsContainers = document.querySelectorAll('.dogcards, .catcards, .rabbitcards, .hamstercards');
+  cardsContainers.forEach((container, i) => {
+    cardsSection.appendChild(container);
+    container.classList.add('cards');
+    if (i !== 0) container.classList.add('hidden');
+  });
+
+  if (dogcardsBlock && !dogcardsBlock.querySelector('.animalcard')) {
+    await loadDogCards(dogcardsBlock);
+  }
+
+  listItems.forEach((li) => {
+    li.addEventListener('click', () => {
+      listItems.forEach((el) => el.classList.remove('active'));
+      li.classList.add('active');
+
+      const selected = li.textContent.trim();
+      const selectedClass = typeMap[selected];
+
+      cardsContainers.forEach((container) => {
+        container.classList.toggle('hidden', !container.classList.contains(selectedClass));
+      });
+    });
+  });
+
+  setTimeout(updateStaticAdoptLinks, 100);
 }

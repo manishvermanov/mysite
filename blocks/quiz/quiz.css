@@ -1,0 +1,125 @@
+/* QUIZ CONTAINER */
+.quiz-container {
+    max-width: 600px;
+    margin: 100px auto 60px;
+    padding: 20px;
+    font-family: "Segoe UI", sans-serif;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgb(0 0 0 / 20%);
+}
+
+/* QUIZ TITLE */
+
+/* MAIN HEADING (Quiz Title) */
+.quiz-container h1#which-pet-matches-your-vibe {
+    font-size: 2.4rem;
+    text-align: center;
+    color: #1a1a1a;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    border-bottom: 1.4px solid rgb(248 225 225);
+    display: inline-block;
+    padding-bottom: 10px;
+}
+
+/* QUESTION HEADINGS */
+.quiz h1:not(#which-pet-matches-your-vibe) {
+    font-size: 1.4rem;
+    color: #333;
+    margin: 30px 0 0;
+    font-weight: 600;
+    border-left: 5px solid var(--accent);
+    padding-left: 12px;
+    background-color: #f5faff;
+    border-radius: 4px;
+}
+
+/* OPTIONS LIST */
+.quiz ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 30px;
+}
+
+/* OPTIONS */
+.quiz li {
+    background-color: #f2f2f2;
+    margin: 10px 0;
+    padding: 15px 18px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition:
+        background-color 0.2s ease,
+        transform 0.15s ease;
+    font-size: 1rem;
+    border: 2px solid transparent;
+}
+
+.quiz li:hover {
+    background-color: white;
+    border-color: var(--accent);
+    transform: scale(1.02);
+}
+
+/* RESULT BOX */
+.quiz-result {
+    background-color: #f9f9f9;
+    border: 2px solid #4caf50;
+    border-radius: 14px;
+    padding: 25px;
+    text-align: center;
+    margin-top: 30px;
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+.quiz-result h2 {
+    font-size: 1.6rem;
+    color: #2e7d32;
+    margin-bottom: 10px;
+}
+
+.quiz-result h3 {
+    font-size: 1.3rem;
+    color: #333;
+}
+
+/* SIMPLE FADE-IN */
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* RESPONSIVE */
+@media (width <= 768px) {
+    .quiz-container {
+        margin-top: 80px;
+        padding: 16px;
+    }
+
+    .quiz li {
+        font-size: 0.95rem;
+        padding: 12px 14px;
+    }
+}
+
+/* ==== HERO BLOCK BASE STYLES (unchanged) ==== */
+
+.hero-background-wrapper picture,
+.hero-background-wrapper img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    z-index: -1;
+}

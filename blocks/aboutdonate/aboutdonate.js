@@ -90,6 +90,10 @@ export default function decorate(block) {
         if (upiModal) {
           upiModal.classList.remove('hidden');
           upiModal.style.display = 'block';
+          // Scroll into view after it's visible
+          requestAnimationFrame(() => {
+            upiModal.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          });
         }
       });
 

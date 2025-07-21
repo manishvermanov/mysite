@@ -57,51 +57,46 @@
     margin-bottom: 20px;
 }
 
-
 @media (width <= 768px) {
     .aboutmain {
-    margin-top: 0;
-}
+        margin-top: 0;
+    }
 
-  .aboutmain > div > div:last-child h1 
- {display: none;
-  }
+    .aboutmain > div > div:last-child h1 {
+        display: none;
+    }
 
-  .aboutmain > div {
-    flex-direction: column;
-    padding: 0;
-  }
+    .aboutmain > div {
+        flex-direction: column;
+        padding: 0;
+    }
 
     .aboutmain > div > div:first-child h1 {
-    display: block;
-    font-size: 2rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
+        display: block;
+        font-size: 2rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+    }
+
+    .aboutmain > div > div:first-child,
+    .aboutmain > div > div:last-child {
+        flex: 1 1 100%;
+        max-width: 100%;
+        text-align: center;
+    }
+
+    .aboutmain > div > div:first-child img {
+        width: 100%;
+        max-width: 350px;
+        margin: 0 auto;
+        margin-bottom: 1rem;
+    }
+
+    .aboutmain > div > div:last-child {
+        padding: 1rem;
+    }
+
+    .aboutmain > div > div:last-child p {
+        font-size: 1rem;
+    }
 }
-
-
-  .aboutmain > div > div:first-child,
-  .aboutmain > div > div:last-child {
-    flex: 1 1 100%;
-    max-width: 100%;
-    text-align: center;
-  }
-
-  .aboutmain > div > div:first-child img {
-    width: 100%;
-    max-width: 350px;
-    margin: 0 auto;
-    margin-bottom: 1rem;
-  }
-
-  .aboutmain > div > div:last-child {
-    padding: 1rem;
-  }
-
-
-  .aboutmain > div > div:last-child p {
-    font-size: 1rem;
-  }
-  }
-
-

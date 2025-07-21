@@ -70,20 +70,25 @@ export default async function decorate(block) {
     brandLink.className = '';
     brandLink.closest('.button-container').className = '';
   }
-
   const navSections = nav.querySelector('.nav-sections');
-  // Highlight active page in nav
+
   if (navSections) {
-    const currentPath = window.location.pathname.replace(/\/$/, '');
+    // Normalize current path: remove trailing slash and language prefix
+    let currentPath = window.location.pathname.replace(/\/$/, '') || '/';
+    currentPath = currentPath.replace(/^\/(en|hi)/, '') || '/';
+
     const navLinks = navSections.querySelectorAll('a');
 
     navLinks.forEach((link) => {
-      const linkPath = new URL(
-        link.href,
-        window.location.origin,
-      ).pathname.replace(/\/$/, '');
+      let linkPath = new URL(link.href, window.location.origin).pathname.replace(
+        /\/$/,
+        '',
+      ) || '/';
+      linkPath = linkPath.replace(/^\/(en|hi)/, '') || '/';
+
       if (linkPath === currentPath) {
-        link.classList.add('active');
+        navLinks.forEach((l) => l.classList.remove('active')); // Remove active from all
+        link.classList.add('active'); // Add to matching one
       }
     });
   }
@@ -198,4 +203,64 @@ export default async function decorate(block) {
       navElement.classList.remove('scrolled');
     }
   });
+
+  // ✅ Language Toggle Injection (EN ↔ HI)
+  const rawPath = window.location.pathname;
+  const normalizedPath = rawPath;
+
+  // ✅ If no language prefix, redirect to /en/
+  if (
+    !normalizedPath.startsWith('/en/')
+    && !normalizedPath.startsWith('/hi/')
+  ) {
+    const newPath = normalizedPath === '/' ? '/en/' : `/en${rawPath}`;
+    window.location.replace(newPath); // avoids double redirect history
+  }
+
+  // ✅ Language toggle logic
+  if (navTools) {
+    const langWrapper = document.createElement('div');
+    langWrapper.className = 'lang-toggle-wrapper';
+    langWrapper.innerHTML = `
+  <div class="language-toggle" id="langToggleSwitch">
+    <div class="switch"><span></span></div>
+    <img src="../../icons/uk.jpeg" alt="UK Flag">
+    <img src="../../icons/india.jpg" alt="India Flag">
+  </div>
+  `;
+
+    navTools.appendChild(langWrapper);
+
+    // ✅ Add language toggle functionality
+    const toggleContainer = langWrapper.querySelector('#langToggleSwitch');
+
+    // Set initial toggle state based on path
+    if (normalizedPath.startsWith('/hi/')) {
+      toggleContainer.classList.add('active');
+    }
+
+    // Toggle language on click
+    toggleContainer.addEventListener('click', () => {
+      toggleContainer.classList.toggle('active');
+
+      const isHindi = toggleContainer.classList.contains('active');
+      let newPath;
+
+      if (isHindi) {
+        if (normalizedPath.startsWith('/en/')) {
+          newPath = normalizedPath.replace('/en/', '/hi/');
+        } else if (!normalizedPath.startsWith('/hi/')) {
+          newPath = `/hi${rawPath}`;
+        }
+      } else if (normalizedPath.startsWith('/hi/')) {
+        newPath = normalizedPath.replace('/hi/', '/en/');
+      } else if (!normalizedPath.startsWith('/en/')) {
+        newPath = `/en${rawPath}`;
+      }
+
+      if (newPath && newPath !== rawPath) {
+        window.location.pathname = newPath;
+      }
+    });
+  }
 }

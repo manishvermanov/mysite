@@ -32,7 +32,7 @@
     background-color: white;
     border-radius: 20px;
     overflow: hidden;
-    height: 21rem;
+    height: 22rem;
     transition: transform 0.3s ease;
     display: flex;
     flex-direction: column;
@@ -87,10 +87,14 @@
 }
 
 .carousel .carousel-slide .carousel-slide-image picture > img {
-    height: 100%;
+    height: 260px;
     width: 100%;
     object-fit: cover;
     display: block;
+}
+
+.carousel .carousel-slide .carousel-slide-content h2 {
+    font-size: 1.3rem;
 }
 
 .carousel .carousel-slide .carousel-slide-content {
@@ -177,58 +181,65 @@
     font-weight: 800;
 }
 
-@media (width <= 475px) {
-    .carousel-container{
+@media (width <= 768px) {
+    .carousel-head img {
+        width: 40px;
+        height: auto;
+        margin-top: 2px;
+        margin-left: 0;
+    }
+
+    .carousel .carousel-slide .carousel-slide-image picture > img {
+        height: 300px;
+        width: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    .carousel-container {
         margin-top: 1rem;
     }
-   
-  .carousel {
-    padding: 0 2rem; /* Add padding to the full carousel container */
-  }
 
-  .carousel .carousel-slides {
-    width: 100%;
-    gap: 36px;
-    padding: 16px 20px;
-  }
+    .carousel {
+        padding: 0 2rem; /* Add padding to the full carousel container */
+    }
 
-  .carousel .carousel-slide {
-    flex: 0 0 100%; /* Show 1 card only */
-    height: 400px; /* Increased height */
-    margin: 0 auto;
-    padding: 12px; /* Optional inner padding */
-  }
+    .carousel .carousel-slides {
+        width: 100%;
+        gap: 36px;
+        padding: 16px 20px;
+    }
 
-  .carousel .carousel-slide-content {
-    padding: 12px 16px;
-    font-size: 1rem;
-  }
+    .carousel .carousel-slide {
+        flex: 0 0 100%; /* Show 1 card only */
+        height: auto; /* Increased height */
+        margin: 0 auto;
+        padding: 12px; /* Optional inner padding */
+    }
 
-  .carousel .carousel-slide:first-of-type {
-    margin-left: 0;
-  }
+    .carousel .carousel-slide-content {
+        padding: 12px 16px;
+        font-size: 1rem;
+    }
 
-  .carousel .carousel-navigation-buttons {
-    left: -5px;
-    right: 16px;
-  }
+    .carousel .carousel-slide:first-of-type {
+        margin-left: 0;
+    }
 
-  .carousel-head{
-    margin-bottom: 1rem;
-  }
+    .carousel .carousel-navigation-buttons {
+        left: -5px;
+        right: 16px;
+    }
 
-  .carousel-head img {
-    width: 40px;
-    height: auto;
-    margin-top: 2px;
-    margin-left: 0;
-}
+    .carousel-head {
+        margin-bottom: 1rem;
+    }
 
-  .carousel-head h1 {
-    font-size: 2rem;
-  }
+    .carousel-head h1 {
+        font-size: 2rem;
+    }
 
-  .carousel-head p {
-    font-size: 1rem;
-  }
+    .carousel-head p {
+        font-size: 1rem;
+    }
 }

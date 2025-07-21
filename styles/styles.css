@@ -12,11 +12,10 @@ html {
 }
 
 :root {
-    --accent: #CF1717;
+    --accent: #cf1717;
     --black: #131313;
 }
 
 body {
     min-height: 100vh;
 }
-

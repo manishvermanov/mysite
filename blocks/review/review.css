@@ -1,166 +1,166 @@
 .review-container > div h1 {
-  text-align: center;
-  margin-top: 3rem;
+    text-align: center;
+    margin-top: 3rem;
 }
 
 .review-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 2rem;
-  width: 100%;
-  box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .review.block form {
-  border: 2px solid #ccc;
-  border-radius: 12px;
-  padding: 2rem;
-  width: 800px;
-  background-color: var(--accent);
-  box-shadow: 0 4px 12px rgb(0 0 0 / 10%);
-  height: 650px;
-  margin: 0 auto; /* Center the form horizontally */
-  max-width: 100%;
-  box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 12px;
+    padding: 2rem;
+    width: 800px;
+    background-color: var(--accent);
+    box-shadow: 0 4px 12px rgb(0 0 0 / 10%);
+    height: 650px;
+    margin: 0 auto; /* Center the form horizontally */
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 /* Hide all default labels */
 .review.block form label {
-  display: none;
+    display: none;
 }
 
 .field-wrapper {
-  margin-bottom: 1rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 /* Input and text area base styles */
 input[type="text"],
 textarea {
-  width: 38%;
-  padding: 0.75rem;
-  border: 1px solid #aaa;
-  border-radius: 8px;
-  font-size: 1rem;
-  box-sizing: border-box;
-  text-align: center;
-  margin: 10px 0;
-  height: 40px;
+    width: 38%;
+    padding: 0.75rem;
+    border: 1px solid #aaa;
+    border-radius: 8px;
+    font-size: 1rem;
+    box-sizing: border-box;
+    text-align: center;
+    margin: 10px 0;
+    height: 40px;
 }
 
 textarea {
-  resize: vertical;
-  height: 150px;
-  width: 80%;
+    resize: vertical;
+    height: 150px;
+    width: 80%;
 }
 
 /* Center the button */
 .submit-wrapper {
-  display: flex;
-  justify-content: center;
+    display: flex;
+    justify-content: center;
 }
 
 .button {
-  margin-top: 2rem;
-  width: 30%;
-  padding: 0.75rem;
-  background-color: var(--black);
-  color: white;
-  border: none;
-  border-radius: 8px;
-  font-size: 1rem;
-  cursor: pointer;
+    margin-top: 2rem;
+    width: 30%;
+    padding: 0.75rem;
+    background-color: var(--black);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
 }
 
 .button:hover {
-  background-color: white;
-  color: black;
+    background-color: white;
+    color: black;
 }
 
 .file-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 1rem 0;
-  position: relative;
-  margin-left: 140px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem 0;
+    position: relative;
+    margin-left: 140px;
 }
 
 .file-wrapper input[type="file"] {
-  width: 400px;
-  height: 45px;
-  font-size: 1rem;
-  cursor: pointer;
-  color: #333;
-  padding-left: 0.6rem;
-  padding-right: 1rem;
-  text-align: right;
+    width: 400px;
+    height: 45px;
+    font-size: 1rem;
+    cursor: pointer;
+    color: #333;
+    padding-left: 0.6rem;
+    padding-right: 1rem;
+    text-align: right;
 }
 
 .file-wrapper input[type="file"]::-webkit-file-upload-button {
-  margin-right: auto;
+    margin-right: auto;
 }
 
 .file-wrapper input[type="file"]::file-selector-button {
-  background-color: var(--black);
-  color: white;
-  border: none;
-  border-radius: 8px;
-  padding: 0.6rem 1.2rem;
-  cursor: pointer;
-  font-size: 1rem;
-  margin-right: 1rem;
+    background-color: var(--black);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 0.6rem 1.2rem;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-right: 1rem;
 }
 
 .file-wrapper input[type="file"]::file-selector-button:hover {
-  background-color: #222;
+    background-color: #222;
 }
 
 .error-msg {
-  color: red;
-  font-size: 0.85rem;
-  margin-top: 4px;
-  display: block;
+    color: red;
+    font-size: 0.85rem;
+    margin-top: 4px;
+    display: block;
 }
 
 /* 🔁 Responsive Fixes */
-@media (width <= 600px) {
-  .review-wrapper {
-    flex-direction: column;
-    padding: 1rem;
-  }
+@media (width <= 768px) {
+    .review-wrapper {
+        flex-direction: column;
+        padding: 1rem;
+    }
 
-  .review.block form {
-    width: 90%;
-    max-width: 100%;
-    padding: 1.5rem;
-    height: auto;
-  }
+    .review.block form {
+        width: 90%;
+        max-width: 100%;
+        padding: 1.5rem;
+        height: auto;
+    }
 
-  input[type="text"] {
-    width: 90%;
-  }
+    input[type="text"] {
+        width: 90%;
+    }
 
-  textarea {
-    width: 90%;
-    height: 120px;
-  }
+    textarea {
+        width: 90%;
+        height: 120px;
+    }
 
-  .button {
-    width: 80%;
-  }
+    .button {
+        width: 80%;
+    }
 
-  .file-wrapper {
-    flex-direction: column;
-    align-items: flex-start;
-    margin-left: 10px;
-    width: 100%;
-  }
+    .file-wrapper {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-left: 10px;
+        width: 100%;
+    }
 
-  .file-wrapper input[type="file"] {
-    width: 100%;
-  }
+    .file-wrapper input[type="file"] {
+        width: 100%;
+    }
 }

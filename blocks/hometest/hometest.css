@@ -6,7 +6,7 @@
     margin: 0.5rem 0;
 }
 
-.hometest-container .default-content-wrapper p{
+.hometest-container .default-content-wrapper p {
     font-size: 1.5rem;
     font-weight: 600;
 }
@@ -29,8 +29,6 @@
     box-shadow: 0 2px 6px rgb(0 0 0 / 10%);
     height: 250px;
 }
-
-
 
 .test-items p:first-child {
     display: flex;
@@ -103,27 +101,27 @@
     color: var(--accent);
 }
 
-#what-people-say {
+.section.hometest-container .default-content-wrapper h1 {
     font-size: 64px;
     font-weight: 900;
 }
 
-@media (width <= 475px) {
-  /* Center and scale down headings */
-  #our-reviews {
-    font-size: 22px;
-    text-align: center;
-    margin-bottom: 0.3rem;
-  }
+@media (width <= 768px) {
+    /* Center and scale down headings */
+    #our-reviews {
+        font-size: 22px;
+        text-align: center;
+        margin-bottom: 0.3rem;
+    }
 
-  #what-people-say {
-    font-size: 2.6rem;
-    text-align: center;
-    line-height: 1.2;
-    padding: 0 1rem;
-  }
+    .section.hometest-container .default-content-wrapper h1 {
+        font-size: 2.6rem;
+        text-align: center;
+        line-height: 1.2;
+        padding: 0 1rem;
+    }
 
-  .hometest-container > div:first-child {
-    padding: 0 1rem;
-  }
+    .hometest-container > div:first-child {
+        padding: 0 1rem;
+    }
 }

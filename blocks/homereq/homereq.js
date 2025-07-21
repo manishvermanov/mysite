@@ -14,6 +14,7 @@ export default function decorate() {
       children[1].classList.add('homereq-image');
     }
   }
+
   const homereqText = document.querySelector('.homereq-text');
 
   if (homereqText) {
@@ -30,10 +31,10 @@ export default function decorate() {
 
       if (
         node.nodeType === Node.ELEMENT_NODE
-        && node.matches('h2#submitting-an-application')
+        && (node.matches('h2#submitting-an-application')
+          || node.matches('h2#एप्लिकेशन-सबमिट-करना'))
       ) {
-        // Start collecting from the element BEFORE this h5
-        // So go back to find the previous <p> and include that too
+        // Start collecting from the element BEFORE this h2
         let j = i - 1;
         while (j >= 0) {
           const prev = nodes[j];
@@ -52,9 +53,9 @@ export default function decorate() {
     }
 
     nodesToMove.forEach((node) => stepsWrapper.appendChild(node));
-
     homereqText.appendChild(stepsWrapper);
   }
+
   const stepsContainer = document.querySelector('.homereq-steps');
   const children = Array.from(stepsContainer.children);
 
@@ -66,7 +67,6 @@ export default function decorate() {
       const wrapper1 = document.createElement('div');
       wrapper1.className = 'each-step';
 
-      // Move both p and h5 into the new wrapper
       stepsContainer.insertBefore(wrapper1, current);
       wrapper1.appendChild(current);
       wrapper1.appendChild(next);

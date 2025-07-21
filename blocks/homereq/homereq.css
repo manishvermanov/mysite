@@ -54,10 +54,9 @@
 }
 
 .homereq-image img {
-     width: 100%; 
-     height: auto;
- 
-  }
+    width: 100%;
+    height: auto;
+}
 
 /* Steps section */
 .homereq-steps {
@@ -122,86 +121,83 @@
     transform: scale(1.05);
 }
 
-@media (width <= 475px) {
-.homereq-container {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-    margin-top: 3rem;
-}
+@media (width <= 768px) {
+    .homereq-container {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        margin-top: 3rem;
+    }
 
     .req-background-wrapper {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 105vh;
-    z-index: -1;
-    display: block;
-  }
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 105vh;
+        z-index: -1;
+        display: block;
+    }
 
-  .req-background-wrapper p {
-    height: 100%;
-    margin: 0;
-  }
+    .req-background-wrapper p {
+        height: 100%;
+        margin: 0;
+    }
 
-  .req-background-wrapper picture,
-  .req-background-wrapper img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center -190px;
-    display: block;
-  }
+    .req-background-wrapper picture,
+    .req-background-wrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center -190px;
+        display: block;
+    }
 
+    .homereq > div {
+        flex-direction: column;
+    }
 
-  .homereq > div {
-    flex-direction: column;
-  }
+    .homereq-text {
+        flex: 0 0 100%;
+        width: 90%;
+        margin: 0 auto;
+        padding: 10px;
+        text-align: center;
+    }
 
-  .homereq-text {
-    flex: 0 0 100%;
-    width: 90%;
-    margin: 0 auto;
-    padding: 10px;
-    text-align: center;
-  }
+    .homereq-image {
+        display: none; /* if hiding, make sure container still has enough height */
+    }
 
-  .homereq-image {
-    display: none; /* if hiding, make sure container still has enough height */
-  }
+    .homereq-text h1 {
+        font-size: 2rem;
+        line-height: 1.4;
+        text-align: left;
+    }
 
-  .homereq-text h1 {
-    font-size: 2rem;
-    line-height: 1.4;
-    text-align: left;
-  }
+    .homereq p {
+        margin-top: 1rem;
+        font-size: 1.1rem;
+        line-height: 1;
+        text-align: left;
+    }
 
-  .homereq p {
-    margin-top: 1rem;
-    font-size: 1.1rem;
-    line-height: 1;
-    text-align: left;
-  }
+    .homereq-image img {
+        width: 100%;
+        height: auto;
+    }
 
-  .homereq-image img {
-    width: 100%;
-    height: auto;
-  }
+    .each-step {
+        gap: 0.8rem;
+    }
 
-  .each-step {
-    gap: 0.8rem;
-  }
+    .each-step img {
+        width: 40px;
+        padding: 0;
+    }
 
-  .each-step img {
-    width: 40px;
-    padding: 0;
-  }
-
-  .each-step h2 {
-    font-size: 1rem;
-    margin-top: 17px;
-  }
-
-
+    .each-step h2 {
+        font-size: 1rem;
+        margin-top: 17px;
+    }
 }
