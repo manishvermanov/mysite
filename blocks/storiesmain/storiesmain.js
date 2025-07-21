@@ -21,7 +21,9 @@ export default function decorate(block) {
     if (!lastParagraph) return;
 
     // Get original text (remove opening quote if present)
-    const originalText = lastParagraph.textContent.trim().replace(/^["“”']+/, '');
+    const originalText = lastParagraph.textContent
+      .trim()
+      .replace(/^["“”']+/, '');
     lastParagraph.remove(); // Remove it so we can retype
 
     // Create review container

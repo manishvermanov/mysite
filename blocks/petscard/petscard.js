@@ -10,12 +10,17 @@ const updateStaticAdoptLinks = () => {
 
     cards.forEach((card) => {
       const image = card.querySelector('.card-front img')?.src;
-      const name = card.querySelector('.card-front p:last-of-type')?.textContent?.trim();
-      const breed = card.querySelector('.card-back h2 strong')?.textContent?.trim();
+      const name = card
+        .querySelector('.card-front p:last-of-type')
+        ?.textContent?.trim();
+      const breed = card
+        .querySelector('.card-back h2 strong')
+        ?.textContent?.trim();
 
       const id = Array.from(card.querySelectorAll('.card-back p'))
         .find((p) => p.textContent.includes('Pet ID:'))
-        ?.textContent?.split(':')?.[1]?.trim();
+        ?.textContent?.split(':')?.[1]
+        ?.trim();
 
       const adoptBtn = card.querySelector('.card-back .button');
 
@@ -23,7 +28,10 @@ const updateStaticAdoptLinks = () => {
         const adoptURL = new URL('/en/adopt', window.location.origin);
         adoptURL.searchParams.set('PetImage', image);
         adoptURL.searchParams.set('Breed', breed);
-        adoptURL.searchParams.set('PetType', petType.charAt(0).toUpperCase() + petType.slice(1));
+        adoptURL.searchParams.set(
+          'PetType',
+          petType.charAt(0).toUpperCase() + petType.slice(1),
+        );
         adoptURL.searchParams.set('PetID', id);
 
         adoptBtn.href = adoptURL.toString();
@@ -85,7 +93,9 @@ const renderDogCards = (container, dogs) => {
     `;
 
     document.body.appendChild(toast);
-    toast.querySelector('.quiz-toast-close').addEventListener('click', () => toast.remove());
+    toast
+      .querySelector('.quiz-toast-close')
+      .addEventListener('click', () => toast.remove());
   }, 3000);
 };
 
@@ -151,7 +161,9 @@ export default async function decorate(block) {
     Hamster: 'hamstercards',
   };
 
-  const cardsContainers = document.querySelectorAll('.dogcards, .catcards, .rabbitcards, .hamstercards');
+  const cardsContainers = document.querySelectorAll(
+    '.dogcards, .catcards, .rabbitcards, .hamstercards',
+  );
   cardsContainers.forEach((container, i) => {
     cardsSection.appendChild(container);
     container.classList.add('cards');
@@ -171,7 +183,10 @@ export default async function decorate(block) {
       const selectedClass = typeMap[selected];
 
       cardsContainers.forEach((container) => {
-        container.classList.toggle('hidden', !container.classList.contains(selectedClass));
+        container.classList.toggle(
+          'hidden',
+          !container.classList.contains(selectedClass),
+        );
       });
     });
   });
