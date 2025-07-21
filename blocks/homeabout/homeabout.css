@@ -90,6 +90,16 @@
     border: 1px solid var(--accent);
 }
 
+.btn-about a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    line-height: 53px; /* Match height for vertical centering */
+    color: white;
+    text-decoration: none;
+}
+
 /* ----------- Responsive (475px and below) ----------- */
 @media (width <= 768px) {
     .homeabout.block > div {

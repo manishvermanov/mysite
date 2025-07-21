@@ -95,6 +95,11 @@
     border: 1px solid var(--accent);
 }
 
+.hero-btn a{
+    color: white;
+    text-decoration: none;
+}
+
 .btn-transparent {
     background-color: transparent;
     color: var(--black);
@@ -104,6 +109,10 @@
 .btn-transparent:hover {
     background-color: var(--accent);
     color: white;
+}
+
+.btn-transparent a{
+    color: black;
 }
 
 .hero-images {
