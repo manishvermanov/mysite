@@ -18,46 +18,38 @@ const toggleMenu = (nav, navSections, forceExpanded = null) => {
   const button = nav.querySelector('.nav-hamburger button');
   document.body.style.overflowY = expanded || isDesktop.matches ? '' : 'hidden';
   nav.setAttribute('aria-expanded', expanded ? 'false' : 'true');
-  toggleAllNavSections(
-    navSections,
-    expanded || isDesktop.matches ? 'false' : 'true',
-  );
+  toggleAllNavSections(navSections, expanded || isDesktop.matches ? 'false' : 'true');
 
   if (button) {
-    button.setAttribute(
-      'aria-label',
-      expanded ? 'Open navigation' : 'Close navigation',
-    );
+    button.setAttribute('aria-label', expanded ? 'Open navigation' : 'Close navigation');
   }
 
-  if (button && button.firstElementChild) {
+  if (button?.firstElementChild) {
     button.firstElementChild.classList.toggle('open', !expanded);
   }
 
   const navDrops = navSections.querySelectorAll('.nav-drop');
   if (isDesktop.matches) {
-    navDrops.forEach((drop) => {
-      if (!drop.hasAttribute('tabindex')) {
-        drop.setAttribute('tabindex', 0);
-      }
-    });
+    navDrops.forEach((drop) => drop.setAttribute('tabindex', 0));
   } else {
-    navDrops.forEach((drop) => {
-      drop.removeAttribute('tabindex');
-    });
+    navDrops.forEach((drop) => drop.removeAttribute('tabindex'));
   }
 };
 
 export default async function decorate(block) {
-  const navMeta = getMetadata('nav');
-  let navPath;
-  if (navMeta) {
-    navPath = new URL(navMeta, window.location).pathname;
-  } else {
-    const lang = window.location.pathname.startsWith('/hi/') ? 'hi' : 'en';
-    navPath = `/${lang}/nav`;
+  const rawPath = window.location.pathname;
+
+  // ✅ Redirect only if neither /en/ nor /hi/ exist
+  if (!rawPath.startsWith('/en/') && !rawPath.startsWith('/hi/')) {
+    const newPath = rawPath === '/' ? '/en/' : `/en${rawPath}`;
+    window.location.replace(newPath);
+    return;
   }
 
+  // ✅ Determine language and nav path
+  const lang = rawPath.startsWith('/hi/') ? 'hi' : 'en';
+  const navMeta = getMetadata('nav');
+  const navPath = navMeta ? new URL(navMeta, window.location).pathname : `/${lang}/nav`;
   const fragment = await loadFragment(navPath);
 
   block.textContent = '';
@@ -77,30 +69,24 @@ export default async function decorate(block) {
     brandLink.className = '';
     brandLink.closest('.button-container').className = '';
   }
+
   const navSections = nav.querySelector('.nav-sections');
 
   if (navSections) {
-    // Normalize current path: remove trailing slash and language prefix
-    let currentPath = window.location.pathname.replace(/\/$/, '') || '/';
+    let currentPath = rawPath.replace(/\/$/, '') || '/';
     currentPath = currentPath.replace(/^\/(en|hi)/, '') || '/';
 
     const navLinks = navSections.querySelectorAll('a');
-
     navLinks.forEach((link) => {
-      let linkPath = new URL(link.href, window.location.origin).pathname.replace(
-        /\/$/,
-        '',
-      ) || '/';
+      let linkPath = new URL(link.href, window.location.origin).pathname.replace(/\/$/, '') || '/';
       linkPath = linkPath.replace(/^\/(en|hi)/, '') || '/';
 
       if (linkPath === currentPath) {
-        navLinks.forEach((l) => l.classList.remove('active')); // Remove active from all
-        link.classList.add('active'); // Add to matching one
+        navLinks.forEach((l) => l.classList.remove('active'));
+        link.classList.add('active');
       }
     });
-  }
 
-  if (navSections) {
     navSections
       .querySelectorAll(':scope .default-content-wrapper > ul > li')
       .forEach((navSection) => {
@@ -109,10 +95,7 @@ export default async function decorate(block) {
           if (isDesktop.matches) {
             const expanded = navSection.getAttribute('aria-expanded') === 'true';
             toggleAllNavSections(navSections);
-            navSection.setAttribute(
-              'aria-expanded',
-              expanded ? 'false' : 'true',
-            );
+            navSection.setAttribute('aria-expanded', expanded ? 'false' : 'true');
           }
         });
       });
@@ -187,14 +170,14 @@ export default async function decorate(block) {
     }
   }
 
-  // ✅ ADDED: Inject "Adopt Now" into mobile nav
+  // ✅ Mobile-only: Inject "Adopt Now" link
   if (!isDesktop.matches && navSections) {
     const navList = navSections.querySelector('ul');
     const adoptLi = document.createElement('li');
     adoptLi.setAttribute('aria-expanded', 'false');
 
     const adoptLink = document.createElement('a');
-    adoptLink.href = 'http://localhost:3000/adopt'; // change this to your actual adopt form path
+    adoptLink.href = '/adopt';
     adoptLink.textContent = 'Adopt Now 🐾';
     adoptLink.className = 'mobile-adopt-link';
 
@@ -211,58 +194,34 @@ export default async function decorate(block) {
     }
   });
 
-  // ✅ Language Toggle Injection (EN ↔ HI)
-  const rawPath = window.location.pathname;
-  const normalizedPath = rawPath;
-
-  // ✅ If no language prefix, redirect to /en/
-  if (
-    !normalizedPath.startsWith('/en/')
-    && !normalizedPath.startsWith('/hi/')
-  ) {
-    const newPath = normalizedPath === '/' ? '/en/' : `/en${rawPath}`;
-    window.location.replace(newPath); // avoids double redirect history
-  }
-
-  // ✅ Language toggle logic
+  // ✅ Language toggle switch
   if (navTools) {
     const langWrapper = document.createElement('div');
     langWrapper.className = 'lang-toggle-wrapper';
     langWrapper.innerHTML = `
-  <div class="language-toggle" id="langToggleSwitch">
-    <div class="switch"><span></span></div>
-    <img src="../../icons/uk.jpeg" alt="UK Flag">
-    <img src="../../icons/india.jpg" alt="India Flag">
-  </div>
-  `;
+      <div class="language-toggle" id="langToggleSwitch">
+        <div class="switch"><span></span></div>
+        <img src="../../icons/uk.jpeg" alt="UK Flag">
+        <img src="../../icons/india.jpg" alt="India Flag">
+      </div>
+    `;
 
     navTools.appendChild(langWrapper);
 
-    // ✅ Add language toggle functionality
     const toggleContainer = langWrapper.querySelector('#langToggleSwitch');
-
-    // Set initial toggle state based on path
-    if (normalizedPath.startsWith('/hi/')) {
+    if (lang === 'hi') {
       toggleContainer.classList.add('active');
     }
 
-    // Toggle language on click
     toggleContainer.addEventListener('click', () => {
       toggleContainer.classList.toggle('active');
-
       const isHindi = toggleContainer.classList.contains('active');
       let newPath;
 
-      if (isHindi) {
-        if (normalizedPath.startsWith('/en/')) {
-          newPath = normalizedPath.replace('/en/', '/hi/');
-        } else if (!normalizedPath.startsWith('/hi/')) {
-          newPath = `/hi${rawPath}`;
-        }
-      } else if (normalizedPath.startsWith('/hi/')) {
-        newPath = normalizedPath.replace('/hi/', '/en/');
-      } else if (!normalizedPath.startsWith('/en/')) {
-        newPath = `/en${rawPath}`;
+      if (isHindi && rawPath.startsWith('/en/')) {
+        newPath = rawPath.replace('/en/', '/hi/');
+      } else if (!isHindi && rawPath.startsWith('/hi/')) {
+        newPath = rawPath.replace('/hi/', '/en/');
       }
 
       if (newPath && newPath !== rawPath) {
