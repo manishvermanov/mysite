@@ -18,10 +18,16 @@ const toggleMenu = (nav, navSections, forceExpanded = null) => {
   const button = nav.querySelector('.nav-hamburger button');
   document.body.style.overflowY = expanded || isDesktop.matches ? '' : 'hidden';
   nav.setAttribute('aria-expanded', expanded ? 'false' : 'true');
-  toggleAllNavSections(navSections, expanded || isDesktop.matches ? 'false' : 'true');
+  toggleAllNavSections(
+    navSections,
+    expanded || isDesktop.matches ? 'false' : 'true',
+  );
 
   if (button) {
-    button.setAttribute('aria-label', expanded ? 'Open navigation' : 'Close navigation');
+    button.setAttribute(
+      'aria-label',
+      expanded ? 'Open navigation' : 'Close navigation',
+    );
   }
 
   if (button?.firstElementChild) {
@@ -49,7 +55,9 @@ export default async function decorate(block) {
   // ✅ Determine language and nav path
   const lang = rawPath.startsWith('/hi/') ? 'hi' : 'en';
   const navMeta = getMetadata('nav');
-  const navPath = navMeta ? new URL(navMeta, window.location).pathname : `/${lang}/nav`;
+  const navPath = navMeta
+    ? new URL(navMeta, window.location).pathname
+    : `/${lang}/nav`;
   const fragment = await loadFragment(navPath);
 
   block.textContent = '';
@@ -78,7 +86,10 @@ export default async function decorate(block) {
 
     const navLinks = navSections.querySelectorAll('a');
     navLinks.forEach((link) => {
-      let linkPath = new URL(link.href, window.location.origin).pathname.replace(/\/$/, '') || '/';
+      let linkPath = new URL(link.href, window.location.origin).pathname.replace(
+        /\/$/,
+        '',
+      ) || '/';
       linkPath = linkPath.replace(/^\/(en|hi)/, '') || '/';
 
       if (linkPath === currentPath) {
@@ -95,7 +106,10 @@ export default async function decorate(block) {
           if (isDesktop.matches) {
             const expanded = navSection.getAttribute('aria-expanded') === 'true';
             toggleAllNavSections(navSections);
-            navSection.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+            navSection.setAttribute(
+              'aria-expanded',
+              expanded ? 'false' : 'true',
+            );
           }
         });
       });
@@ -199,12 +213,12 @@ export default async function decorate(block) {
     const langWrapper = document.createElement('div');
     langWrapper.className = 'lang-toggle-wrapper';
     langWrapper.innerHTML = `
-      <div class="language-toggle" id="langToggleSwitch">
-        <div class="switch"><span></span></div>
-        <img src="../../icons/uk.jpeg" alt="UK Flag">
-        <img src="../../icons/india.jpg" alt="India Flag">
-      </div>
-    `;
+  <div class="language-toggle" id="langToggleSwitch">
+    <span class="label hi">हिंदी</span>
+    <div class="switch"><span></span></div>
+    <span class="label en">ENG</span>
+  </div>
+`;
 
     navTools.appendChild(langWrapper);
 

@@ -32,7 +32,7 @@
 .filter-list li {
     padding: 0.75rem 1rem;
     margin: 0.5rem 0;
-    background: #eee;
+    background: #d1c0c0;
     cursor: pointer;
     border-radius: 5px;
     text-align: center;
@@ -95,7 +95,7 @@
 
 /* --- Updated Front Content Styles --- */
 .card-front {
-    background: white;
+    background: #eae5e5;
     padding: 1rem;
     display: flex;
     flex-direction: column;
@@ -136,7 +136,7 @@
 
 /* Back of card */
 .card-back {
-    background: #f4f4f4;
+    background: #eae5e5;
     transform: rotateY(180deg);
     padding: 1rem;
     display: flex;
@@ -166,7 +166,6 @@
     display: none !important;
 }
 
-/* Responsive layout */
 @media (width <= 768px) {
     .petscard > div {
         flex-direction: column;
@@ -174,23 +173,41 @@
     }
 
     .filter-section {
+        flex: initial;
         width: 100%;
-        margin-bottom: 1rem;
+        margin: 1rem 0 0.5rem;
+        padding: 0.25rem 0.5rem;
+        background: transparent;
+        box-shadow: none;
+    }
+
+    .filter-list {
+        display: flex;
+        flex-wrap: wrap; /* ✅ allow wrapping */
+        justify-content: center; /* ✅ center filters */
+        gap: 0.5rem;
+        padding: 0;
+        margin: 0;
+    }
+
+    .filter-list li {
+        flex: 0 0 20%; /* ✅ each filter takes 25% */
+        max-width: 25%;
+        padding: 0.5rem 0.6rem;
+        font-size: 0.9rem;
+        white-space: nowrap;
+        text-align: center;
+        background: #d1c0c0;
+        border-radius: 5px;
+        margin: 0;
+    }
+
+    .cards-section {
+        gap: 1rem;
+        margin-top: 0;
     }
 
     .cards-wrapper.cards {
         justify-content: center;
-    }
-
-    .filter-list li {
-        padding: 0.75rem 1rem;
-        background: #eee;
-        cursor: pointer;
-        border-radius: 5px;
-        text-align: center;
-        font-weight: 500;
-        transition: background 0.3s ease;
-        margin: 12px auto;
-        width: 60%;
     }
 }

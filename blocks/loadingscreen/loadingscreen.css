@@ -14,28 +14,44 @@
     transition: opacity 0.5s ease;
 }
 
-/* Optional if you want to animate fade-out */
+/* Fade out animation */
 .loadingscreen-container.fade-out {
     opacity: 0;
     pointer-events: none;
 }
 
-/* Wrapper to keep image from shifting layout */
+/* Wrapper for the loading image */
 .loadingimm {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 400px;
-    height: 400px;
-    max-width: 90%;
-    max-height: 90%;
-    transform: translateX(50px);
+    width: 50vw;
+    height: 50vw;
+    max-width: 400px;
+    max-height: 400px;
+    transform: translateX(0); /* Centered for all screens */
 }
 
-/* The gif image itself */
+/* Actual image */
 .loadingimm picture,
 .loadingimm img {
     width: 100%;
     height: 100%;
     object-fit: contain;
+}
+
+/* Responsive adjustments for tablets and smaller */
+@media (width <= 768px) {
+    .loadingimm {
+        width: 60vw;
+        height: 60vw;
+    }
+}
+
+/* Extra small screens (optional) */
+@media (width<= 768px) {
+    .loadingimm {
+        width: 70vw;
+        height: 70vw;
+    }
 }

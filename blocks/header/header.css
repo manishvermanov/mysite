@@ -89,12 +89,11 @@ nav.scrolled {
     cursor: pointer;
 }
 
-/* Optional: Hide paw pictures if not needed */
 .language-toggle {
     position: relative;
     width: 65px;
     height: 30px;
-    background: #d18400; /* Default EN background */
+    background: #ccc; /* OFF state background (HI) */
     border-radius: 18px;
     padding: 3px;
     box-shadow:
@@ -105,35 +104,40 @@ nav.scrolled {
     align-items: center;
     justify-content: space-between;
     box-sizing: border-box;
+    font-size: 9px;
+    font-weight: bold;
+    color: #555;
+    user-select: none;
 }
 
 .language-toggle.active {
-    background: #d0eaff; /* HI background */
+    background: #eee; /* ON state background (ENG) */
 }
 
-.language-toggle img {
-    width: 22px;
-    height: 22px;
-    border-radius: 50%;
+.language-toggle .label {
     z-index: 1;
+    flex: 1;
+    text-align: center;
+    pointer-events: none;
+    color: #555;
 }
 
 .language-toggle .switch {
     position: absolute;
     top: 3px;
-    left: 3px;
+    left: 2px;
     width: 24px;
     height: 24px;
-    background: linear-gradient(to bottom, #fff, #ddd);
+    background: #fff; /* switch knob background */
     border-radius: 50%;
     z-index: 2;
-    box-shadow: 0 3px 6px rgb(0 0 0 / 30%); /* raised glow */
-    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: 0 3px 6px rgb(0 0 0 / 30%);
+    transition: transform 0.3s ease;
     will-change: transform;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 12px;
+    font-size: 9px;
     font-weight: bold;
     color: #333;
 }
@@ -144,7 +148,7 @@ nav.scrolled {
 
 .language-toggle.active .switch {
     transform: translateX(35px);
-    background: linear-gradient(to bottom, #fffaec, #ffcf91);
+    background: #f8f8f8;
 }
 
 .language-toggle:not(.active) .switch span::before {
@@ -152,7 +156,7 @@ nav.scrolled {
 }
 
 .language-toggle.active .switch span::before {
-    content: "EN";
+    content: "ENG";
 }
 
 /* ❌ Hide mobile-adopt-link on desktop */
@@ -296,6 +300,6 @@ nav.scrolled {
 }
 
 .nav-sections a.active {
-    background-color: #cf1717;
+    background-color: var(--accent);
     color: white;
 }

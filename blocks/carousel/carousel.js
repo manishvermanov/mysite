@@ -21,10 +21,12 @@ function showSlide(block, slideIndex = 0) {
   const slides = block.querySelectorAll('.carousel-slide');
   const totalSlides = slides.length;
 
-  // ✅ Prevent overflow
-  if (slideIndex < 0 || slideIndex >= totalSlides) return;
+  let index = slideIndex;
 
-  const slideToShow = slides[slideIndex];
+  if (index < 0) index = totalSlides - 1;
+  if (index >= totalSlides) index = 0;
+
+  const slideToShow = slides[index];
   const scrollContainer = block.querySelector('.carousel-slides');
 
   scrollContainer.scrollTo({
@@ -33,7 +35,7 @@ function showSlide(block, slideIndex = 0) {
     behavior: 'smooth',
   });
 
-  updateSlideState(block, slideIndex);
+  updateSlideState(block, index);
 }
 
 function bindEvents(block) {

@@ -18,7 +18,6 @@ export default function decorate(block) {
     if (imageWrapper) {
       imageWrapper.classList.add('hero-images');
 
-      // ✅ Remove lazy loading from all hero images
       const heroImgs = imageWrapper.querySelectorAll('img[loading="lazy"]');
       heroImgs.forEach((img) => {
         img.removeAttribute('loading');
@@ -33,11 +32,28 @@ export default function decorate(block) {
   if (wrapper) {
     wrapper.classList.add('hero-background-wrapper');
 
-    // ✅ Fix lazy-loading on background LCP image
     const bgImg = wrapper.querySelector('img[loading="lazy"]');
     if (bgImg) {
       bgImg.removeAttribute('loading');
       bgImg.setAttribute('fetchpriority', 'high');
     }
+  }
+
+  // ✅ Insert Toast inside Heroblock (bottom of it)
+  if (!document.getElementById('quiz-toast') && heroBlock) {
+    const toast = document.createElement('div');
+    toast.id = 'quiz-toast';
+    toast.innerHTML = `
+      <span>Discover the Animal Aligned with Your Energy</span>
+      <a href="/quiz" class="quiz-toast-btn">Take the Quiz</a>
+      <span class="quiz-toast-close">&times;</span>
+    `;
+    toast.classList.add('hero-toast');
+
+    heroBlock.appendChild(toast);
+
+    toast.querySelector('.quiz-toast-close')?.addEventListener('click', () => {
+      toast.remove();
+    });
   }
 }

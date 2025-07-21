@@ -153,3 +153,12 @@
         height: 11rem;
     }
 }
+
+.carousel-btn:disabled {
+    /* lighter button */
+    color: #666; /* dimmed arrow */
+    cursor: not-allowed; /* default 'disabled' cursor */
+    opacity: 0.6; /* slightly faded */
+    pointer-events: none; /* no interaction */
+    box-shadow: none;
+}

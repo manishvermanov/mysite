@@ -33,6 +33,7 @@
     padding-left: 12px;
     background-color: #f5faff;
     border-radius: 4px;
+    margin-bottom: 2rem;
 }
 
 /* OPTIONS LIST */
@@ -97,9 +98,10 @@
     }
 }
 
-/* RESPONSIVE */
+/* Tablet and below */
 @media (width <= 768px) {
     .quiz-container {
+        width: 85%;
         margin-top: 80px;
         padding: 16px;
     }
@@ -110,16 +112,20 @@
     }
 }
 
-/* ==== HERO BLOCK BASE STYLES (unchanged) ==== */
+/* Mobile phones */
+@media (width <= 480px) {
+    .quiz-container {
+        width: 80%;
+        margin: 90px auto 40px;
+        padding: 16px;
+    }
 
-.hero-background-wrapper picture,
-.hero-background-wrapper img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: top;
-    z-index: -1;
+    .quiz li {
+        font-size: 0.92rem;
+        padding:12px;
+    }
+
+    .quiz-container h1#which-pet-matches-your-vibe {
+        font-size: 1.8rem;
+    }
 }

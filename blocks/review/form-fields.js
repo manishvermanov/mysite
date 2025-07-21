@@ -4,9 +4,7 @@ function createFieldWrapper(fd) {
   const fieldWrapper = document.createElement('div');
   if (fd.Style) fieldWrapper.className = fd.Style;
   fieldWrapper.classList.add('field-wrapper', `${fd.Type}-wrapper`);
-
   fieldWrapper.dataset.fieldset = fd.Fieldset;
-
   return fieldWrapper;
 }
 
@@ -45,32 +43,27 @@ function setCommonAttributes(field, fd) {
 
 const createHeading = (fd) => {
   const fieldWrapper = createFieldWrapper(fd);
-
   const level = fd.Style && fd.Style.includes('sub-heading') ? 3 : 2;
   const heading = document.createElement(`h${level}`);
   heading.textContent = fd.Value || fd.Label;
   heading.id = fd.Id;
-
   fieldWrapper.append(heading);
-
   return { field: heading, fieldWrapper };
 };
 
 const createPlaintext = (fd) => {
   const fieldWrapper = createFieldWrapper(fd);
-
   const text = document.createElement('p');
   text.textContent = fd.Value || fd.Label;
   text.id = fd.Id;
-
   fieldWrapper.append(text);
-
   return { field: text, fieldWrapper };
 };
 
 const createSelect = async (fd) => {
   const select = document.createElement('select');
   setCommonAttributes(select, fd);
+
   const addOption = ({ text, value }) => {
     const option = document.createElement('option');
     option.text = text.trim();
@@ -118,7 +111,6 @@ const createSelect = async (fd) => {
 
 const createConfirmation = (fd, form) => {
   form.dataset.confirmation = new URL(fd.Value).pathname;
-
   return {};
 };
 
@@ -150,6 +142,14 @@ const createInput = (fd) => {
   const field = document.createElement('input');
   field.type = fd.Type;
   setCommonAttributes(field, fd);
+
+  // ✅ Restrict file input to images only if relevant
+  if (field.type === 'file') {
+    const nameMatch = /photo|image|pic|upload/i;
+    if (nameMatch.test(fd.Label || '') || nameMatch.test(fd.Name || '')) {
+      field.accept = 'image/*';
+    }
+  }
 
   const fieldWrapper = createFieldWrapper(fd);
   const label = createLabel(fd);
@@ -206,7 +206,6 @@ const createCheckbox = (fd) => {
   const { field, fieldWrapper } = createInput(fd);
   if (!field.value) field.value = 'checked';
   fieldWrapper.classList.add('selection-wrapper');
-
   return { field, fieldWrapper };
 };
 
@@ -214,7 +213,6 @@ const createRadio = (fd) => {
   const { field, fieldWrapper } = createInput(fd);
   if (!field.value) field.value = fd.Label || 'on';
   fieldWrapper.classList.add('selection-wrapper');
-
   return { field, fieldWrapper };
 };
 
@@ -236,6 +234,5 @@ export default async function createField(fd, form) {
   const type = fd.Type.toLowerCase();
   const createFieldFunc = FIELD_CREATOR_FUNCTIONS[type] || createInput;
   const fieldElements = await createFieldFunc(fd, form);
-
   return fieldElements.fieldWrapper;
 }

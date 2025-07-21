@@ -18,20 +18,24 @@ export default function decorate(block) {
   const cards = Array.from(block.children);
   let activeIndex = 0;
 
-  // Helper: update card highlighting
+  // ✅ Helper: update card highlighting and button states
   function updateHighlight() {
     cards.forEach((card, i) => {
       const isActive = i === activeIndex;
       card.style.backgroundColor = isActive ? 'var(--accent)' : '#ebe4e4';
-      card.style.color = isActive ? '#ffffff' : '#000000'; // ✅ text color change
+      card.style.color = isActive ? '#ffffff' : '#000000';
     });
 
     const cardWidth = cards[0]?.offsetWidth || 260;
-    const gap = 32; // 2rem
+    const gap = 32;
     block.scrollTo({
       left: (cardWidth + gap) * activeIndex,
       behavior: 'smooth',
     });
+
+    // ✅ Disable buttons when at boundaries
+    leftBtn.disabled = activeIndex === 0;
+    rightBtn.disabled = activeIndex === cards.length - 1;
   }
 
   // Initial highlight

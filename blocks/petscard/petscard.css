@@ -22,7 +22,7 @@
 
 /* Button inside the toast */
 .quiz-toast-btn {
-    background: #facc15;
+    background: #ff9a24;
     color: black;
     padding: 6px 10px;
     border-radius: 6px;
@@ -52,5 +52,11 @@
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+@media (width <= 768px) {
+    #quiz-toast {
+        margin-left: 2rem;
     }
 }

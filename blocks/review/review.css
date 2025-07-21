@@ -13,11 +13,10 @@
 }
 
 .review.block form {
-    border: 2px solid #000;
     border-radius: 12px;
     padding: 2rem;
     width: 800px;
-    background-color: rgb(249 236 236);
+    background-color: rgb(215 203 203);
     box-shadow: 0 4px 12px rgb(0 0 0 / 10%);
     height: 650px;
     margin: 0 auto; /* Center the form horizontally */
@@ -134,7 +133,7 @@ textarea {
     }
 
     .review.block form {
-        width: 90%;
+        width: 100%;
         max-width: 100%;
         padding: 1.5rem;
         height: auto;

@@ -45,7 +45,11 @@ const renderDogCards = (container, dogs) => {
     const card = document.createElement('div');
     card.className = 'animalcard flip-card';
 
-    const adoptLink = `/en/adopt?${new URLSearchParams({
+    const langPrefix = window.location.pathname.startsWith('/hi')
+      ? '/hi'
+      : '/en';
+
+    const adoptLink = `${langPrefix}/adopt?${new URLSearchParams({
       PetImage: dog.image,
       Breed: dog.name,
       PetType: 'Dog',
